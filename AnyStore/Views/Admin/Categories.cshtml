@@ -1,7 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Categories";
+    ViewData["Title"] = "Категории товаров";
     Layout = "_AdminLayout";
 }
-<h3>Категории товаров</h3>
+<div class="grid-header">
+    <div class="grid-header-label">
+        <h3>Категории товаров</h3>
+    </div>
+    <div class="grid-header-btn-dv">
+        <button id="add_category_btn" type="button">Добавить</button>
+    </div>
+</div>
+
 <div id="dvCategories"></div>
+<div class="add-window" id="add_window">
+    test
+</div>
+
 <script src="~/js/Categories.js"></script>
+<script>
+        if (CategoryContext)
+            CategoryContext.init();
+
+</script>
+
