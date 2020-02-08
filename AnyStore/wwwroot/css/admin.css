@@ -3,6 +3,9 @@
     width: 100%;
     min-height: 920px;
 }
+main {
+    min-height: 820px;
+}
 .admin-main {
     width: 100%;
     height: 100%;
@@ -21,4 +24,39 @@
 }
 .k-pager-sizes{
     display: none!important;
+}
+.grid-header {
+    display: flex;
+    background-image: none,linear-gradient(to bottom,rgba(255,255,255,.6) 0,rgba(255,255,255,.0) 100%);
+    background-position: 50% 50%;
+    background-color: #e3e3e3;
+    border: 1px solid #c5c5c5;
+}
+.grid-header-label {
+    width: 70%;
+    color: #6d6d6d;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+.grid-header-btn-dv {
+    width: 30%;
+    text-align: right;
+    padding: 7px 15px;
+}
+.navbar-brand {
+    color: #F46A1C!important;
+}
+.flex-grow-1 {
+     flex-grow: unset!important; 
+}
+a.as-nav-link {
+    color: #6D6D6D;
+    padding-left: 20px;
+}
+.as-nav-link:hover {
+    text-decoration: none;
+    color: #F46A1C!important;
+}
+.add-window {
+    display: none;
 }
