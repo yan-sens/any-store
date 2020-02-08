@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/AnyStore
+/AnyStore/bin
+/AnyStore/obj/Debug/netcoreapp3.1/staticwebassets
+/AnyStore/obj
+/Common/bin
+/Common/obj
+/DAL/bin
+/DAL/obj
+/Services/bin
+/Services/obj

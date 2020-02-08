@@ -1,0 +1,24 @@
+﻿body {
+    position: absolute;
+    width: 100%;
+    min-height: 920px;
+}
+.admin-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.admin-nav {
+    width: 20%;
+    height: 100%;
+    float: left;
+}
+.admin-body {
+    width: 80%;
+}
+.k-current-page{
+    display: none!important;
+}
+.k-pager-sizes{
+    display: none!important;
+}

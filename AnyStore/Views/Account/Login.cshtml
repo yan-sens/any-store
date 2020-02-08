@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+@model AccountViewModel
+
+<form asp-action="SignIn" class="login-form">
+    <div class="form-group">
+        <label for="userName">User Name</label>
+        <input required asp-for="UserName" type="text" class="form-control" id="userName" placeholder="Enter User Name">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input required asp-for="Password" type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    @if (Model != null && !String.IsNullOrEmpty(Model.Error))
+    {
+        <div class="login-error-msg">
+            <span class="login-form-error">@Model.Error</span>
+        </div>
+    }
+
+</form>
+
