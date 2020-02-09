@@ -20,7 +20,7 @@ namespace Services.Services
 
         public async Task<List<Category>> GetCategories()
         {
-            return await _dbContext.Categories.ToListAsync();
+            return await _dbContext.Categories.Include(x => x.ParentCategory).ToListAsync();
         }
 
         public async Task<EntityEntry<Category>> AddCategory(Category category)

@@ -11,6 +11,10 @@ namespace DAL.Models
         public string Description { get; set; }
         public Guid? ParentCategoryId { get; set; }
         [NotMapped]
+        public string ParentCategoryName { get; set; }
+        [NotMapped]
         public List<Category> Categories { get; set; }
+        [NotMapped]
+        public Category ParentCategory { get; set; }
     }
 }

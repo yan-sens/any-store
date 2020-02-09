@@ -34,6 +34,11 @@
             cellClose: function (e) {
                 console.log(e);
             },
+            beforeEdit: function (e) {
+                if ($(event.target).attr("data-field") === "parentCategoryName") {
+                    e.preventDefault();
+                }
+            },
             columns: [{
                 field: "name",
                 title: "Название"
@@ -43,6 +48,9 @@
             }, {
                 field: "description",
                 title: "Описание"
+            }, {
+                field: "parentCategoryName",
+                title: "Родительская категория"
             }, {
                 command: [
                 {

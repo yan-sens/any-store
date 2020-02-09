@@ -47,7 +47,12 @@ namespace AnyStore.Controllers
         [Authorize]
         public async Task<List<Category>> GetCategories()
         {
-            return await _categoryService.GetCategories();
+            var categories = await _categoryService.GetCategories();
+            categories.ForEach(x => {
+                x.Categories = null;
+                x.ParentCategoryName = x.ParentCategory?.Name;
+            });
+            return categories;
         }
 
         [Authorize]

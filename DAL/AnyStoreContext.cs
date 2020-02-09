@@ -18,6 +18,10 @@ namespace DAL
         {
             modelBuilder.Entity<Category>().HasKey(x => new { x.Id });
 
+            modelBuilder.Entity<Category>().HasMany(c => c.Categories)
+                .WithOne(c => c.ParentCategory)
+                .HasForeignKey(c => c.ParentCategoryId);
+
             base.OnModelCreating(modelBuilder);
         }
     }
