@@ -7,13 +7,30 @@
         <h3>Категории товаров</h3>
     </div>
     <div class="grid-header-btn-dv">
-        <button id="add_category_btn" type="button">Добавить</button>
+        <button id="open_add_category_window_btn" type="button">Добавить</button>
     </div>
 </div>
 
 <div id="dvCategories"></div>
 <div class="add-window" id="add_window">
-    test
+    <div class="window-ls">
+        <label for="category_name_inp">Название</label><br />
+        <input id="category_name_inp" /><br /><br />
+        <label for="category_title_inp">Заголовок</label><br />
+        <input id="category_title_inp" />
+    </div>
+    <div class="window-rs">
+        <label for="categories_ddl">Родительская категория</label><br />
+        <input id="categories_ddl" /><br /><br />
+        <label for="child_switch_cb">Дочерние категории</label><br />
+        <input id="child_switch_cb" />
+    </div>
+    <div class="window-c">
+        <label for="category_description_ta">Описание</label>
+        <textarea id="category_description_ta"></textarea>
+    </div>
+    <button id="cancel_save_category_btn" type="button">Отмена</button>
+    <button id="save_category_btn" type="button">Сохранить</button>
 </div>
 
 <script src="~/js/Categories.js"></script>
