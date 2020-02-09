@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -47,6 +48,12 @@ namespace AnyStore.Controllers
         public async Task<List<Category>> GetCategories()
         {
             return await _categoryService.GetCategories();
+        }
+
+        [Authorize]
+        public async Task RemoveCategory(string id)
+        {
+            await _categoryService.RemoveCategory(Guid.Parse(id));
         }
     }
 }

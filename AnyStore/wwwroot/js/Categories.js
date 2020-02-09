@@ -20,8 +20,7 @@
                 transport: {
                     read: "/Admin/GetCategories"
                 },
-
-                pageSize: 25
+                pageSize: 20
             },
             height: 550,
             sortable: true,
@@ -54,6 +53,7 @@
             }],
             remove: function (e) {
                 console.log("Removing", e.model.name);
+                context.removeCategory(e.model.id);
             }
         }).data("kendoGrid");
 
@@ -99,5 +99,9 @@
         }).data("kendoComboBox");
         
     };    
+
+    context.removeCategory = function (id) {
+        $.post("/Admin/RemoveCategory", {id: id});
+    };
 
 })(CategoryContext);
