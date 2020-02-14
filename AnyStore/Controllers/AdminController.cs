@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using AnyStore.Models;
+using DAL.Models;
 using DAL.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -56,9 +57,62 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
+        public async Task<List<Category>> GetCategoriesWithChild()
+        {
+            var categories = await _categoryService.GetCategoriesWithChild();
+            categories.ForEach(x => {
+                x.Categories = null;
+                x.ParentCategory = null;
+                x.ParentCategoryName = x.ParentCategory?.Name;
+            });
+            return categories;
+        }
+
+        [Authorize]
         public async Task RemoveCategory(string id)
         {
             await _categoryService.RemoveCategory(Guid.Parse(id));
+        }
+
+        [Authorize]
+        public async Task AddCategory(CategoryRequestModel model)
+        {
+            Guid? parentCategoryId = null;
+            if (!String.IsNullOrEmpty(model.ParentCategoryId))
+                parentCategoryId = Guid.Parse(model.ParentCategoryId);
+
+            var category = new Category()
+            {
+                Name = model.Name,
+                CreateDate = DateTime.Now,
+                Description = model.Description,
+                HasChildren = model.HasChildren,
+                ParentCategoryId = parentCategoryId,
+                Title = model.Title
+            };
+
+            await _categoryService.AddCategory(category);
+        }
+
+        [Authorize]
+        public async Task UpdateCategory(CategoryRequestModel model)
+        {
+            Guid? parentCategoryId = null;
+            if (!String.IsNullOrEmpty(model.ParentCategoryId))
+                parentCategoryId = Guid.Parse(model.ParentCategoryId);
+
+            var category = new Category()
+            {
+                Id = Guid.Parse(model.Id),
+                Name = model.Name,
+                CreateDate = DateTime.Now,
+                Description = model.Description,
+                HasChildren = model.HasChildren,
+                ParentCategoryId = parentCategoryId,
+                Title = model.Title
+            };
+
+            await _categoryService.UpdateCategory(category);
         }
     }
 }

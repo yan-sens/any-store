@@ -9,7 +9,9 @@ namespace Services.Interfaces
     public interface ICategoryService
     {
         Task<List<Category>> GetCategories();
-        Task<EntityEntry<Category>> AddCategory(Category category);
+        Task<List<Category>> GetCategoriesWithChild();
+        Task AddCategory(Category category);
+        Task UpdateCategory(Category category);
         Task RemoveCategory(Guid id);
     }
 }

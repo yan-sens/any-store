@@ -9,6 +9,7 @@ namespace DAL.Models
         public string Name { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public bool HasChildren { get; set; }
         public Guid? ParentCategoryId { get; set; }
         [NotMapped]
         public string ParentCategoryName { get; set; }

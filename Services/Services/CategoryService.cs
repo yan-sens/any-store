@@ -1,10 +1,10 @@
 ﻿using DAL;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Services.Services
@@ -22,10 +22,27 @@ namespace Services.Services
         {
             return await _dbContext.Categories.Include(x => x.ParentCategory).ToListAsync();
         }
-
-        public async Task<EntityEntry<Category>> AddCategory(Category category)
+        public async Task<List<Category>> GetCategoriesWithChild()
         {
-            return await _dbContext.Categories.AddAsync(category);
+            return await _dbContext.Categories.Include(x => x.ParentCategory).Where(x => x.HasChildren).ToListAsync();
+        }
+
+        public async Task AddCategory(Category category)
+        {
+            await _dbContext.Categories.AddAsync(category);
+            _dbContext.SaveChanges();
+        }
+
+        public async Task UpdateCategory(Category category)
+        {
+            var _category = await _dbContext.Categories.FirstOrDefaultAsync(x => x.Id == category.Id);
+            _category.Name = category.Name;
+            _category.Title = category.Title;
+            _category.HasChildren = category.HasChildren;
+            _category.Description = category.Description;
+            _category.ParentCategoryId = category.ParentCategoryId;
+            _dbContext.Entry(_category);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task RemoveCategory(Guid id)
