@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using Common.Classes;
+using DAL;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Services.Interfaces;
@@ -25,6 +26,43 @@ namespace Services.Services
         public async Task<List<Category>> GetCategoriesWithChild()
         {
             return await _dbContext.Categories.Include(x => x.ParentCategory).Where(x => x.HasChildren).ToListAsync();
+        }
+
+        public async Task<List<CategoryMenuItem>> GetCategoryMenuItems()
+        {
+            var response = new List<CategoryMenuItem>();
+            var allCategories = await _dbContext.Categories.ToListAsync();
+            allCategories.Where(x => x.ParentCategoryId == null).ToList().ForEach(x => {
+                var childItems = new List<CategoryMenuItem>();
+                allCategories.Where(c => c.ParentCategoryId == x.Id).ToList().ForEach(c => {
+                    var subChildItems = new List<CategoryMenuItem>();
+                    allCategories.Where(ac => ac.ParentCategoryId == c.Id).ToList().ForEach(ac =>
+                    {
+                        subChildItems.Add(new CategoryMenuItem()
+                        {
+                            Id = ac.Id,
+                            Name = ac.Name,
+                            ChildItems = null
+                        });
+                    });
+
+                    childItems.Add(new CategoryMenuItem()
+                    {
+                        Id = c.Id,
+                        Name = c.Name,
+                        ChildItems = subChildItems
+                    });
+                });
+
+                response.Add(new CategoryMenuItem()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    ChildItems = childItems
+                });
+            });
+
+            return response;
         }
 
         public async Task AddCategory(Category category)

@@ -69,3 +69,22 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+#categories_treeview {
+    padding: 10px;
+}
+#categories_treeview{
+    border: 1px solid #EEE;
+}
+#categories_treeview li {
+    position: relative;
+    list-style: none;
+    display: flex;
+}
+#categories_treeview div {
+    float: right;
+    display: none;
+}
+.hover>div, .hover>span {
+    display: block!important;
+}

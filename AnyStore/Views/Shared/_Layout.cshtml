@@ -1,47 +1,378 @@
-﻿<!DOCTYPE html>
+﻿@model BaseViewModel
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AnyStore</title>
+
+    <!-- Google Fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <!-- Font awesome CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/font-awesome.min.css">
+    <!-- owl.carousel CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" href="~/css/owl.theme.css">
+    <link rel="stylesheet" href="~/css/owl.transitions.css">
+    <!-- nivo slider CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/nivo-slider.css" type="text/css" />
+    <!-- meanmenu CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/meanmenu.min.css">
+    <!-- jquery-ui CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/jquery-ui.css">
+    <!-- animate CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/animate.css">
+    <!-- main CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/main.css">
+    <!-- style CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/style.css">
+    <!-- responsive CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/css/responsive.css">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <!-- HEADER-AREA START -->
+    <header class="header-area">
+        <!-- HEADER-TOP END -->
+        <!-- HEADER-MIDDLE START -->
+        <div class="header-middle">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AnyStore</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+                <!-- Start Support-Client -->
+                <div class="support-client hidden-xs">
+                    <div class="row">
+                        <!-- Start Single-Support -->
+                        <div class="col-md-3 hidden-sm">
+                            <div class="single-support">
+                                <div class="support-content">
+                                    <i class="fa fa-clock-o"></i>
+                                    <div class="support-text">
+                                        <h1 class="zero gfont-1">рабочее время</h1>
+                                        <p>Пн - Сб: 8.00 - 18.00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single-Support -->
+                        <!-- Start Single-Support -->
+                        <div class="col-md-3 col-sm-4">
+                            <div class="single-support">
+                                <i class="fa fa-truck"></i>
+                                <div class="support-text">
+                                    <h1 class="zero gfont-1">Бесплатная доставка</h1>
+                                    <p>При заказе больше $199</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single-Support -->
+                        <!-- Start Single-Support -->
+                        <div class="col-md-3 col-sm-4">
+                            <div class="single-support">
+                                <i class="fa fa-money"></i>
+                                <div class="support-text">
+                                    <h1 class="zero gfont-1">Возврат денег 100%</h1>
+                                    <p>
+                                        В течение 30 дней после доставки
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single-Support -->
+                        <!-- Start Single-Support -->
+                        <div class="col-md-3 col-sm-4">
+                            <div class="single-support">
+                                <i class="fa fa-phone-square"></i>
+                                <div class="support-text">
+                                    <h1 class="zero gfont-1">Телефон: 0123456789</h1>
+                                    <p>Закажи в онлайне сейчас!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single-Support -->
+                    </div>
+                </div>
+                <!-- End Support-Client -->
+                <!-- Start logo & Search Box -->
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        <div class="logo">
+                            <a href="#" title="Наш магаз">Наш Магаз</a>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-12">
+                        <div class="quick-access">
+                            <div class="search-by-category">
+                                <div class="header-search">
+                                    <form action="#">
+                                        <input type="text" placeholder="Поиск">
+                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="top-cart">
+                                <ul>
+                                    <li>
+                                        <a href="cart.html">
+                                            <span class="cart-icon"><i class="fa fa-shopping-cart"></i></span>
+                                            <span class="cart-total">
+                                                <span class="cart-title">Корзина</span>
+                                                <span class="cart-item">2 товар(а) - </span>
+                                                <span class="top-cart-price">$365.00</span>
+                                            </span>
+                                        </a>
+                                        <div class="mini-cart-content">
+                                            <div class="cart-img-details">
+                                                <div class="cart-img-photo">
+                                                    <a href="#"><img src="~/images/product/total-cart.jpg" alt="#"></a>
+                                                </div>
+                                                <div class="cart-img-content">
+                                                    <a href="#"><h4>Prod Aldults</h4></a>
+                                                    <span>
+                                                        <strong class="text-right">1 x</strong>
+                                                        <strong class="cart-price text-right">$180.00</strong>
+                                                    </span>
+                                                </div>
+                                                <div class="pro-del">
+                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="cart-img-details">
+                                                <div class="cart-img-photo">
+                                                    <a href="#"><img src="~/images/product/total-cart2.jpg" alt="#"></a>
+                                                </div>
+                                                <div class="cart-img-content">
+                                                    <a href="#"><h4>Fact Prone</h4></a>
+                                                    <span>
+                                                        <strong class="text-right">1 x</strong>
+                                                        <strong class="cart-price text-right">$185.00</strong>
+                                                    </span>
+                                                </div>
+                                                <div class="pro-del">
+                                                    <a href="#"><i class="fa fa-times"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="cart-inner-bottom">
+                                                <span class="total">
+                                                    Total:
+                                                    <span class="amount">$550.00</span>
+                                                </span>
+                                                <span class="cart-button-top">
+                                                    <a href="cart.html">View Cart</a>
+                                                    <a href="checkout.html">Checkout</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End logo & Search Box -->
+            </div>
+        </div>
+        <!-- HEADER-MIDDLE END -->
+        <!-- START MAINMENU-AREA -->
+        <div class="mainmenu-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mainmenu hidden-sm hidden-xs">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="#">Главная</a>
+                                    </li>
+                                    <li><a href="#">О нас</a></li>
+                                    <li class="hot"><a href="#">Топ продаж</a></li>
+                                    <li class="new"><a href="#">Новые товары</a></li>
+                                    <li><a href="#">Специальные товары</a></li>
+                                    <li><a href="#">Контакты</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - AnyStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- END MAIN-MENU-AREA -->
+        <!-- Start Mobile-menu -->
+        <div class="mobile-menu-area hidden-md hidden-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <nav id="mobile-menu">
+                            <ul>
+                                <li>
+                                    <a href="index.html">Home</a>
+                                    <ul>
+                                        <li><a href="index.html">Home Page 1</a></li>
+                                        <li><a href="index-2.html">Home Page 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="about.html">About Us</a></li>
+                                <li><a href="shop.html">Bestseller Products</a></li>
+                                <li><a href="shop-list.html">New Products</a></li>
+                                <li>
+                                    <a href="#">Pages</a>
+                                    <ul>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="account.html">Create Account</a></li>
+                                        <li><a href="login.html">Login</a></li>
+                                        <li><a href="my-account.html">My Account</a></li>
+                                        <li><a href="product-details.html">Product details</a></li>
+                                        <li><a href="shop.html">Shop Grid View</a></li>
+                                        <li><a href="shop-list.html">Shop List View</a></li>
+                                        <li><a href="wishlist.html">Wish List</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">Contact Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Mobile-menu -->
+    </header>
+    <!-- HEADER AREA END -->
+    <!-- Category slider area start -->
+    <div class="category-slider-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- CATEGORY-MENU-LIST START -->
+                    <div class="left-category-menu hidden-sm hidden-xs">
+                        <div class="left-product-cat">
+                            <div class="category-heading">
+                                <h2>Каталог</h2>
+                            </div>
+                            <div class="category-menu-list">
+                                <ul>
+                                    @{
+                                        var maxMenuCount = 5;
+                                        var menuIndex = 0;
+                                        @foreach (var item in Model.CategoryMenuItems)
+                                        {
+                                            menuIndex++;
+                                            var addClass = menuIndex > maxMenuCount ? "rx-child" : String.Empty;
+                                            <!-- Single menu start -->
+                                            @if (item.ChildItems.Count == 0)
+                                            {
+                                                <li class="@addClass">
+                                                    <a href="#">@item.Name</a>
+                                                </li>
+                                            }
+                                            else
+                                            {
+                                                <li class="@addClass arrow-plus">
+                                                    <a href="#">@item.Name</a>
+
+                                                    <div class="cat-left-drop-menu">
+                                                        @foreach (var childItem in item.ChildItems)
+                                                        {
+                                                            <div class="cat-left-drop-menu-left">
+                                                                <a class="menu-item-heading" href="#">@childItem.Name</a>
+                                                                <ul>
+                                                                    @foreach (var subchildItem in childItem.ChildItems)
+                                                                    {
+                                                                        <li><a href="#">@subchildItem.Name</a></li>
+                                                                    }
+                                                                </ul>
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </li>
+                                            }
+                                        }
+                                    }
+
+                                    <!-- MENU ACCORDION START -->
+                                    <li class=" rx-parent">
+                                        <a class="rx-default">
+                                            Больше категорий... <span class="cat-thumb  fa fa-plus"></span>
+                                        </a>
+                                        <a class="rx-show">
+                                            свернуь... <span class="cat-thumb  fa fa-minus"></span>
+                                        </a>
+                                    </li>
+                                    <!-- MENU ACCORDION END -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END CATEGORY-MENU-LIST -->
+                </div>
+                <div class="col-md-9">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Category slider area End -->
+    @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2020 - AnyStore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+
+    <!-- jquery
+    ============================================ -->
+    <script src="~/js/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap JS
+    ============================================ -->
+    <script src="~/js/bootstrap.min.js"></script>
+    <!-- wow JS
+    ============================================ -->
+    <script src="~/js/wow.min.js"></script>
+    <!-- meanmenu JS
+    ============================================ -->
+    <script src="~/js/jquery.meanmenu.js"></script>
+    <!-- owl.carousel JS
+    ============================================ -->
+    <script src="~/js/owl.carousel.min.js"></script>
+    <!-- scrollUp JS
+    ============================================ -->
+    <script src="~/js/jquery.scrollUp.min.js"></script>
+    <!-- countdon.min JS
+    ============================================ -->
+    <script src="~/js/countdon.min.js"></script>
+    <!-- jquery-price-slider js
+    ============================================ -->
+    <script src="~/js/jquery-price-slider.js"></script>
+    <!-- Nivo slider js
+    ============================================ -->
+    <script src="~/js/jquery.nivo.slider.js" type="text/javascript"></script>
+    <!-- plugins JS
+    ============================================ -->
+    <script src="~/js/plugins.js"></script>
+    <!-- main JS
+    ============================================ -->
+    <script src="~/js/main.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

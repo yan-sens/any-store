@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using AnyStore.Models;
@@ -10,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using DAL.Models.Account;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authorization;
+using Services.Interfaces;
 
 namespace AnyStore.Controllers
 {
@@ -18,7 +15,7 @@ namespace AnyStore.Controllers
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager,
-            IConfiguration configuration) : base(userManager, configuration)
+            IConfiguration configuration, ICategoryService categoryService) : base(userManager, configuration, categoryService)
         {
             _logger = logger;
         }
@@ -26,7 +23,9 @@ namespace AnyStore.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            return View();
+            var model = new BaseViewModel();
+            model.CategoryMenuItems = CategoryMenuItems;
+            return View(model);
         }
 
         public IActionResult Privacy()

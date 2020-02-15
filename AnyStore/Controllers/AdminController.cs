@@ -14,12 +14,9 @@ namespace AnyStore.Controllers
 {
     public class AdminController : BaseController
     {
-        private readonly ICategoryService _categoryService;
         public AdminController(UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, ICategoryService categoryService) : base(userManager, configuration)
-        {
-            _categoryService = categoryService;
-        }
+            IConfiguration configuration, ICategoryService categoryService) : base(userManager, configuration, categoryService)
+        { }
 
         [Authorize]
         public IActionResult Index()

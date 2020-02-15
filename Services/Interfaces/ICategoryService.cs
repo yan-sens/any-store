@@ -1,5 +1,5 @@
-﻿using DAL.Models;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Common.Classes;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -13,5 +13,6 @@ namespace Services.Interfaces
         Task AddCategory(Category category);
         Task UpdateCategory(Category category);
         Task RemoveCategory(Guid id);
+        Task<List<CategoryMenuItem>> GetCategoryMenuItems();
     }
 }

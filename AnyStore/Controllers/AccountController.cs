@@ -21,7 +21,7 @@ namespace AnyStore.Controllers
         private readonly IAccountService _accountService;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, IAccountService accountService) : base(userManager, configuration)
+            IConfiguration configuration, IAccountService accountService, ICategoryService categoryService) : base(userManager, configuration, categoryService)
         {
             _accountService = accountService;
         }
