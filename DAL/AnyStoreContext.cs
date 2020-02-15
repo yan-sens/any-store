@@ -1,6 +1,5 @@
 ﻿using DAL.Models;
 using DAL.Models.Account;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +12,7 @@ namespace DAL
         public AnyStoreContext() { }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
