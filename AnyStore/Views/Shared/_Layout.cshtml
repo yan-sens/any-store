@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AnyStore</title>
 
+    <!-- Kendo
+    ============================================ -->
+    <script src="~/js/jquery2020.min.js"></script>
+    <script src="~/js/kendo2020.all.min.js"></script>
+    <link href="~/css/kendo.custom.css" rel="stylesheet" />
+
     <!-- Google Fonts
     ============================================ -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
@@ -61,22 +67,9 @@
                 <div class="support-client hidden-xs">
                     <div class="row">
                         <!-- Start Single-Support -->
-                        <div class="col-md-3 hidden-sm">
+                        <div class="col-md-4 col-sm-4">
                             <div class="single-support">
-                                <div class="support-content">
-                                    <i class="fa fa-clock-o"></i>
-                                    <div class="support-text">
-                                        <h1 class="zero gfont-1">рабочее время</h1>
-                                        <p>Пн - Сб: 8.00 - 18.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Single-Support -->
-                        <!-- Start Single-Support -->
-                        <div class="col-md-3 col-sm-4">
-                            <div class="single-support">
-                                <i class="fa fa-truck"></i>
+                                <i class="fa fa-truck fa-lg"></i>
                                 <div class="support-text">
                                     <h1 class="zero gfont-1">Бесплатная доставка</h1>
                                     <p>При заказе больше $199</p>
@@ -85,9 +78,9 @@
                         </div>
                         <!-- End Single-Support -->
                         <!-- Start Single-Support -->
-                        <div class="col-md-3 col-sm-4">
-                            <div class="single-support">
-                                <i class="fa fa-money"></i>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="single-support" style="text-align: center;">
+                                <i class="fas fa-hand-holding-usd fa-lg"></i>
                                 <div class="support-text">
                                     <h1 class="zero gfont-1">Возврат денег 100%</h1>
                                     <p>
@@ -98,9 +91,9 @@
                         </div>
                         <!-- End Single-Support -->
                         <!-- Start Single-Support -->
-                        <div class="col-md-3 col-sm-4">
-                            <div class="single-support">
-                                <i class="fa fa-phone-square"></i>
+                        <div class="col-md-4 col-sm-4">
+                            <div class="single-support" style="text-align: right;">
+                                <i class="fa fa-phone-square fa-lg"></i>
                                 <div class="support-text">
                                     <h1 class="zero gfont-1">Телефон: 0123456789</h1>
                                     <p>Закажи в онлайне сейчас!</p>
@@ -115,7 +108,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
                         <div class="logo">
-                            <a href="#" title="Наш магаз">Наш Магаз</a>
+                            <a href="/" title="Наш магаз">Наш Магаз</a>
                         </div>
                     </div>
                     <div class="col-md-9 col-sm-12">
@@ -128,63 +121,69 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="top-cart">
-                                <ul>
-                                    <li>
-                                        <a href="cart.html">
-                                            <span class="cart-icon"><i class="fa fa-shopping-cart"></i></span>
-                                            <span class="cart-total">
-                                                <span class="cart-title">Корзина</span>
-                                                <span class="cart-item">2 товар(а) - </span>
-                                                <span class="top-cart-price">$365.00</span>
-                                            </span>
-                                        </a>
-                                        <div class="mini-cart-content">
-                                            <div class="cart-img-details">
-                                                <div class="cart-img-photo">
-                                                    <a href="#"><img src="~/images/product/total-cart.jpg" alt="#"></a>
-                                                </div>
-                                                <div class="cart-img-content">
-                                                    <a href="#"><h4>Prod Aldults</h4></a>
-                                                    <span>
-                                                        <strong class="text-right">1 x</strong>
-                                                        <strong class="cart-price text-right">$180.00</strong>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="top-cart">
+                                        <ul>
+                                            <li>
+                                                <div>
+                                                    <span class="cart-total">
+                                                        <span class="cart-title">корзина</span>
+                                                        <span class="cart-item">2 товар(а)</span>
+                                                        <span class="top-cart-price">$365.00</span>
+                                                        <button type="submit"><span class="cart-icon"><i class="fa fa-shopping-cart"></i></span></button>
                                                     </span>
                                                 </div>
-                                                <div class="pro-del">
-                                                    <a href="#"><i class="fa fa-times"></i></a>
+
+                                                <div class="mini-cart-content">
+                                                    <div class="cart-img-details">
+                                                        <div class="cart-img-photo">
+                                                            <a href="#"><img src="~/images/product/total-cart.jpg" alt="#"></a>
+                                                        </div>
+                                                        <div class="cart-img-content">
+                                                            <a href="#"><h4>Prod Aldults</h4></a>
+                                                            <span>
+                                                                <strong class="text-right">1 x</strong>
+                                                                <strong class="cart-price text-right">$180.00</strong>
+                                                            </span>
+                                                        </div>
+                                                        <div class="pro-del">
+                                                            <a href="#"><i class="fa fa-times"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <div class="cart-img-details">
+                                                        <div class="cart-img-photo">
+                                                            <a href="#"><img src="~/images/product/total-cart2.jpg" alt="#"></a>
+                                                        </div>
+                                                        <div class="cart-img-content">
+                                                            <a href="#"><h4>Fact Prone</h4></a>
+                                                            <span>
+                                                                <strong class="text-right">1 x</strong>
+                                                                <strong class="cart-price text-right">$185.00</strong>
+                                                            </span>
+                                                        </div>
+                                                        <div class="pro-del">
+                                                            <a href="#"><i class="fa fa-times"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="cart-inner-bottom">
+                                                        <span class="total">
+                                                            Total:
+                                                            <span class="amount">$550.00</span>
+                                                        </span>
+                                                        <span class="cart-button-top">
+                                                            <a href="cart.html">View Cart</a>
+                                                            <a href="checkout.html">Checkout</a>
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="clear"></div>
-                                            <div class="cart-img-details">
-                                                <div class="cart-img-photo">
-                                                    <a href="#"><img src="~/images/product/total-cart2.jpg" alt="#"></a>
-                                                </div>
-                                                <div class="cart-img-content">
-                                                    <a href="#"><h4>Fact Prone</h4></a>
-                                                    <span>
-                                                        <strong class="text-right">1 x</strong>
-                                                        <strong class="cart-price text-right">$185.00</strong>
-                                                    </span>
-                                                </div>
-                                                <div class="pro-del">
-                                                    <a href="#"><i class="fa fa-times"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="cart-inner-bottom">
-                                                <span class="total">
-                                                    Total:
-                                                    <span class="amount">$550.00</span>
-                                                </span>
-                                                <span class="cart-button-top">
-                                                    <a href="cart.html">View Cart</a>
-                                                    <a href="checkout.html">Checkout</a>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -201,13 +200,23 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="#">Главная</a>
+                                        <a href="/">Главная</a>
                                     </li>
                                     <li><a href="#">О нас</a></li>
                                     <li class="hot"><a href="#">Топ продаж</a></li>
                                     <li class="new"><a href="#">Новые товары</a></li>
                                     <li><a href="#">Специальные товары</a></li>
                                     <li><a href="#">Контакты</a></li>
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                                        <li><a asp-controller="Admin" asp-action="Categories">Админка</a></li>
+                                        <li><a asp-controller="Account" asp-action="LogOut">Выйти</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a asp-controller="Account" asp-action="Login">Войти</a></li>
+                                    }
+
                                 </ul>
                             </nav>
                         </div>
@@ -258,78 +267,178 @@
     </header>
     <!-- HEADER AREA END -->
     <!-- Category slider area start -->
-    <div class="category-slider-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <!-- CATEGORY-MENU-LIST START -->
-                    <div class="left-category-menu hidden-sm hidden-xs">
-                        <div class="left-product-cat">
-                            <div class="category-heading">
-                                <h2>Каталог</h2>
-                            </div>
-                            <div class="category-menu-list">
-                                <ul>
-                                    @{
-                                        var maxMenuCount = 5;
-                                        var menuIndex = 0;
-                                        @foreach (var item in Model.CategoryMenuItems)
-                                        {
-                                            menuIndex++;
-                                            var addClass = menuIndex > maxMenuCount ? "rx-child" : String.Empty;
-                                            <!-- Single menu start -->
-                                            @if (item.ChildItems.Count == 0)
+    @if (Model != null && Model.CategoryMenuItems != null)
+    {
+        <div class="category-slider-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- CATEGORY-MENU-LIST START -->
+                        <div class="left-category-menu hidden-sm hidden-xs">
+                            <div class="left-product-cat">
+                                <div class="category-heading">
+                                    <h2>Каталог</h2>
+                                </div>
+                                <div class="category-menu-list">
+                                    <ul>
+                                        @{
+                                            var maxMenuCount = 2;
+                                            var menuIndex = 0;
+                                            @foreach (var item in Model.CategoryMenuItems)
                                             {
-                                                <li class="@addClass">
-                                                    <a href="#">@item.Name</a>
-                                                </li>
-                                            }
-                                            else
-                                            {
-                                                <li class="@addClass arrow-plus">
-                                                    <a href="#">@item.Name</a>
-
-                                                    <div class="cat-left-drop-menu">
-                                                        @foreach (var childItem in item.ChildItems)
-                                                        {
+                                                menuIndex++;
+                                                var addClass = menuIndex > maxMenuCount ? "rx-child" : String.Empty;
+                                                <!-- Single menu start -->
+                                                @if (item.ChildItems.Count == 0)
+                                                {
+                                                    <li class="@addClass">
+                                                        <a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@item.Id">@item.Name</a>
+                                                    </li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="@addClass arrow-plus">
+                                                        <a href="#">@item.Name</a>
+                                                        <div class="cat-left-drop-menu">
                                                             <div class="cat-left-drop-menu-left">
-                                                                <a class="menu-item-heading" href="#">@childItem.Name</a>
                                                                 <ul>
-                                                                    @foreach (var subchildItem in childItem.ChildItems)
+                                                                    @foreach (var childItem in item.ChildItems.Where(x => x.ChildItems.Count == 0))
                                                                     {
-                                                                        <li><a href="#">@subchildItem.Name</a></li>
+                                                                        <li><a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@childItem.Id">@childItem.Name</a></li>
                                                                     }
                                                                 </ul>
                                                             </div>
-                                                        }
-                                                    </div>
-                                                </li>
+
+                                                            @foreach (var childItem in item.ChildItems.Where(x => x.ChildItems.Count > 0))
+                                                            {
+                                                                <div class="cat-left-drop-menu-left">
+                                                                    <a class="menu-item-heading" href="#">@childItem.Name</a>
+                                                                    <ul>
+                                                                        @foreach (var subchildItem in childItem.ChildItems)
+                                                                        {
+                                                                            <li><a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@subchildItem.Id">@subchildItem.Name</a></li>
+                                                                        }
+                                                                    </ul>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </li>
+                                                }
                                             }
                                         }
-                                    }
 
-                                    <!-- MENU ACCORDION START -->
-                                    <li class=" rx-parent">
-                                        <a class="rx-default">
-                                            Больше категорий... <span class="cat-thumb  fa fa-plus"></span>
-                                        </a>
-                                        <a class="rx-show">
-                                            свернуь... <span class="cat-thumb  fa fa-minus"></span>
-                                        </a>
-                                    </li>
-                                    <!-- MENU ACCORDION END -->
-                                </ul>
+                                        <!-- MENU ACCORDION START -->
+                                        <li class=" rx-parent">
+                                            <a class="rx-default">
+                                                <span class="cat-thumb  fa fa-plus"></span> Больше категорий... 
+                                            </a>
+                                            <a class="rx-show">
+                                                <span class="cat-thumb  fa fa-minus"></span> свернуь... 
+                                            </a>
+                                        </li>
+                                        <!-- MENU ACCORDION END -->
+                                    </ul>
+                                </div>
                             </div>
                         </div>
+                        <!-- END CATEGORY-MENU-LIST -->
+                        <!-- START HOT-DEALS-AREA -->
+                        <div class="hot-deals-area carosel-circle">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="area-title">
+                                        <h3 class="title-group border-red gfont-1">Горячие предложения</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="active-hot-deals">
+                                    <!-- Start Single-hot-deals -->
+                                    <div class="col-xs-12">
+                                        <div class="single-hot-deals">
+                                            <div class="hot-deals-photo">
+                                                <a href="#"><img src="~/images/hot-deals/1.jpg" alt="Product"></a>
+                                            </div>
+                                            <div class="count-down">
+                                                <div class="timer">
+                                                    <div data-countdown="02/17/2020"></div>
+                                                </div>
+                                            </div>
+                                            <div class="hot-deals-text">
+                                                <h5><a href="#" class="name-group">Various Versions</a></h5>
+                                                <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
+                                                <div class="price-box">
+                                                    <span class="price gfont-2">$99.00</span>
+                                                    <span class="old-price gfont-2">$110.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single-hot-deals -->
+                                    <!-- Start Single-hot-deals -->
+                                    <div class="col-xs-12">
+                                        <div class="single-hot-deals">
+                                            <div class="hot-deals-photo">
+                                                <a href="#"><img src="~/images/hot-deals/2.jpg" alt="Product"></a>
+                                            </div>
+                                            <div class="count-down">
+                                                <div class="timer">
+                                                    <div data-countdown="03/17/2020"></div>
+                                                </div>
+                                            </div>
+                                            <div class="hot-deals-text">
+                                                <h5><a href="#" class="name-group">Trid Palm</a></h5>
+                                                <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
+                                                <div class="price-box">
+                                                    <span class="price gfont-2">$85.00</span>
+                                                    <span class="old-price gfont-2">$120.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single-hot-deals -->
+                                    <!-- Start Single-hot-deals -->
+                                    <div class="col-xs-12">
+                                        <div class="single-hot-deals">
+                                            <div class="hot-deals-photo">
+                                                <a href="#"><img src="~/images/hot-deals/3.jpg" alt="Product"></a>
+                                            </div>
+                                            <div class="count-down">
+                                                <div class="timer">
+                                                    <div data-countdown="04/13/2020"></div>
+                                                </div>
+                                            </div>
+                                            <div class="hot-deals-text">
+                                                <h5><a href="#" class="name-group">Established Fact</a></h5>
+                                                <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
+                                                <div class="price-box">
+                                                    <span class="price gfont-2">$90.00</span>
+                                                    <span class="old-price gfont-2">$105.00</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single-hot-deals -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END HOT-DEALS-AREA -->
+
                     </div>
-                    <!-- END CATEGORY-MENU-LIST -->
-                </div>
-                <div class="col-md-9">
-                    @RenderBody()
+                    <div class="col-md-9">
+                        @RenderBody()
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="container">
+            @RenderBody()
+        </div>
+    }
+
     <!-- Category slider area End -->
     @*<footer class="border-top footer text-muted">
             <div class="container">
@@ -372,6 +481,9 @@
     <!-- main JS
     ============================================ -->
     <script src="~/js/main.js"></script>
+    <!-- all webfont JS
+    ============================================ -->
+    <script src="~/js/all.min.js"></script>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

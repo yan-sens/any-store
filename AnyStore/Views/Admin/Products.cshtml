@@ -1,10 +1,23 @@
 ﻿
 @{
     ViewData["Title"] = "Products";
-}
-@{
     Layout = "_AdminLayout";
 }
 
-<h1>Products</h1>
+<div class="grid-header">
+    <div class="grid-header-label">
+        <h3>Товары</h3>
+    </div>
+    <div class="grid-header-btn-dv">
+        <button id="open_add_product_window_btn" type="button">Добавить</button>
+    </div>
+</div>
+<div id="dvProducts"></div>
+
+<script src="~/js/Products.js"></script>
+<script>
+    if (ProductsContext)
+        ProductsContext.init();
+
+</script>
 

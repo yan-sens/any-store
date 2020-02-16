@@ -16,15 +16,17 @@ namespace AnyStore.Controllers
         protected ApplicationUser CurrentUser;
         protected IConfiguration Configuration;
         protected ICategoryService _categoryService;
+        protected IProductService _productService;
         protected List<CategoryMenuItem> CategoryMenuItems = new List<CategoryMenuItem>();
 
         protected BaseController(
             UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, ICategoryService categoryService)
+            IConfiguration configuration, ICategoryService categoryService, IProductService productService)
         {
             UserManager = userManager;
             Configuration = configuration;
             _categoryService = categoryService;
+            _productService = productService;
 
             CategoryMenuItems = _categoryService.GetCategoryMenuItems().Result;
         }

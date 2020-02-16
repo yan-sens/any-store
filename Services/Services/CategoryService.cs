@@ -23,6 +23,11 @@ namespace Services.Services
         {
             return await _dbContext.Categories.Include(x => x.ParentCategory).ToListAsync();
         }
+        public async Task<Category> GetCategoryById(Guid categoryId)
+        {
+            return await _dbContext.Categories.FirstOrDefaultAsync(x => x.Id == categoryId);
+        }
+
         public async Task<List<Category>> GetCategoriesWithChild()
         {
             return await _dbContext.Categories.Include(x => x.ParentCategory).Where(x => x.HasChildren).ToListAsync();
@@ -57,7 +62,7 @@ namespace Services.Services
                 response.Add(new CategoryMenuItem()
                 {
                     Id = x.Id,
-                    Name = x.Name,
+                    Name = x.Title,
                     ChildItems = childItems
                 });
             });

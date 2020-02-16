@@ -50,7 +50,7 @@ namespace AnyStore
                 .AddEntityFrameworkStores<AnyStoreContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddTransient<IAccountService, AccountService>();
+            
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -62,7 +62,9 @@ namespace AnyStore
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             //Services
+            services.AddTransient<IAccountService, AccountService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IProductService, ProductService>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

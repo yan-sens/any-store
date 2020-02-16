@@ -88,3 +88,14 @@ body {
 .hover>div, .hover>span {
     display: block!important;
 }
+.cat-left-drop-menu-left{
+    display: contents;
+}
+.login-form {
+    width: 345px;
+    padding-top: 80px;
+    margin: auto;
+}
+#products_pager {
+    margin-top: 25px;
+}

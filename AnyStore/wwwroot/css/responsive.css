@@ -197,11 +197,10 @@ p.welcome-msg, .support-client {
 .top-cart {
   display: inline-block;
   float: none;
-  margin-top: 30px;
   text-align: center;
 }
-.top-cart ul li .mini-cart-content {
-  left: -35px;
+.cart-title{
+    margin-bottom: 0px!important;
 }
 .cart-img-content > span {
   float: left;

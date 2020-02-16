@@ -21,7 +21,7 @@ namespace AnyStore.Controllers
         private readonly IAccountService _accountService;
 
         public AccountController(UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, IAccountService accountService, ICategoryService categoryService) : base(userManager, configuration, categoryService)
+            IConfiguration configuration, IAccountService accountService, ICategoryService categoryService, IProductService productService) : base(userManager, configuration, categoryService, productService)
         {
             _accountService = accountService;
         }
@@ -30,6 +30,14 @@ namespace AnyStore.Controllers
         public IActionResult Login()
         {
             return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> LogOut()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            return RedirectToAction("Index", "Home");
         }
 
         [AllowAnonymous]
@@ -60,7 +68,7 @@ namespace AnyStore.Controllers
                 
             }
 
-            return RedirectToAction("Privacy", "Home");
+            return RedirectToAction("Categories", "Admin");
         }
 
         public async Task<UserResponseModel> SignUp()

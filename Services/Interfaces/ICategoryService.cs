@@ -12,6 +12,7 @@ namespace Services.Interfaces
         Task<List<Category>> GetCategoriesWithChild();
         Task AddCategory(Category category);
         Task UpdateCategory(Category category);
+        Task<Category> GetCategoryById(Guid categoryId);
         Task RemoveCategory(Guid id);
         Task<List<CategoryMenuItem>> GetCategoryMenuItems();
     }

@@ -102,6 +102,7 @@
                 $.post(url, data, function (data) {
                     context.CategoryWindow.close();
                     context.DataGrid.dataSource.read();
+                    context.CategoriesDropPown.dataSource.read();
                 });
             }
         });

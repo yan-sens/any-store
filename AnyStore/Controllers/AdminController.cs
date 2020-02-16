@@ -15,7 +15,7 @@ namespace AnyStore.Controllers
     public class AdminController : BaseController
     {
         public AdminController(UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, ICategoryService categoryService) : base(userManager, configuration, categoryService)
+            IConfiguration configuration, ICategoryService categoryService, IProductService productService) : base(userManager, configuration, categoryService, productService)
         { }
 
         [Authorize]
@@ -110,6 +110,6 @@ namespace AnyStore.Controllers
             };
 
             await _categoryService.UpdateCategory(category);
-        }
+        }        
     }
 }

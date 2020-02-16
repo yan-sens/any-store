@@ -15,7 +15,7 @@ namespace AnyStore.Controllers
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, ICategoryService categoryService) : base(userManager, configuration, categoryService)
+            IConfiguration configuration, ICategoryService categoryService, IProductService productService) : base(userManager, configuration, categoryService, productService)
         {
             _logger = logger;
         }
@@ -23,8 +23,7 @@ namespace AnyStore.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var model = new BaseViewModel();
-            model.CategoryMenuItems = CategoryMenuItems;
+            var model = new BaseViewModel(CategoryMenuItems);
             return View(model);
         }
 

@@ -98,9 +98,9 @@ button {
 }
 body {
   background: #fff none repeat scroll 0 0;
-  color: #7e7e7e;
+  color: #7e7e7e!important;
   font-family: 'Raleway', sans-serif;
-  font-size: 13px;
+  font-size: 14px!important;
   font-weight: 400;
   text-align: left;
 }
@@ -278,7 +278,7 @@ p.welcome-msg {
   font-size: 30px;
 }
 .support-text {
-  margin-left: 45px;
+    display: inline-grid;
 }
 .support-text h1 {
   color: #7e7e7e;
@@ -290,9 +290,6 @@ p.welcome-msg {
 .support-text p {
   line-height: 12px;
   margin: 0;
-}
-.quick-access {
-  display: inline-block;
 }
 .quick-access .search-by-category {
   border: 2px solid #bebebe;
@@ -385,6 +382,7 @@ p.welcome-msg {
 }
 .top-cart ul li a {
     display: block;
+    color: #26ACCE;
 }
 .top-cart ul li a span i {
   background: #26acce none repeat scroll 0 0;
@@ -412,6 +410,8 @@ p.welcome-msg {
   position: relative;
   text-align: left;
   text-transform: uppercase;
+  padding-right: 60px;
+  text-align: right;
 }
 .top-cart span.cart-title {
   color: #929292;
@@ -1069,7 +1069,6 @@ p.welcome-msg {
 .preview-1 .nivo-controlNav {
   bottom: 0;
   left: 0;
-  position: absolute;
   right: 0;
   z-index: 99999;
 }
@@ -2205,7 +2204,7 @@ background: #EC4445;
   text-transform: capitalize;
 }
 .filter-menu ul li a::before {
-  background: rgba(0, 0, 0, 0) url("img/icon/icon-select-layer.png") no-repeat scroll -10px 5px;
+  background: rgba(0, 0, 0, 0) url("/images/icon/icon-select-layer.png") no-repeat scroll -10px 5px;
   border: 3px solid transparent;
   border-radius: 0;
   content: "";
@@ -2215,7 +2214,7 @@ background: #EC4445;
   transition: all 0.3s ease 0s;
   width: 10px;
 }
-.filter-menu ul li a:hover:before {background: rgba(0, 0, 0, 0) url("img/icon/icon-select-layer.png") no-repeat scroll 5px 5px;}
+.filter-menu ul li a:hover:before {background: rgba(0, 0, 0, 0) url("/images/icon/icon-select-layer.png") no-repeat scroll 5px 5px;}
 .accordion_one h4 {font-size: 25px;}
 .accordion_one h4 a {
   color: #999;
@@ -2252,11 +2251,12 @@ background: #EC4445;
 }
 .product-filter ul {
   float: left;
-  margin: 6px 0 0;
+  margin: 15px 0 0;
 }
 .product-filter ul li a {}
 .product-filter ul li {
   display: inline-block;
+  margin-right: 1rem;
 }
 .sort, .limit {
   color: #666;
@@ -2300,18 +2300,6 @@ background: #EC4445;
   height: 40px;
   position: inherit;
   width: auto;
-}
-.product-filter ul li.grid a {
-  background: rgba(0, 0, 0, 0) url("img/icon/grid.png") no-repeat scroll 0 0;
-}
-.product-filter ul li.list a {
-  background: rgba(0, 0, 0, 0) url("img/icon/list.png") no-repeat scroll 0 0;
-}
-.product-filter ul li.grid.active a {
-  background: rgba(0, 0, 0, 0) url("img/icon/grid.png") no-repeat scroll 0 -17px;
-}
-.product-filter ul li.list.active a {
-  background: rgba(0, 0, 0, 0) url("img/icon/list.png") no-repeat scroll 0 -17px;
 }
 .product-filter ul li a {
   display: block;
