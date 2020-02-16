@@ -28,9 +28,9 @@ namespace AnyStore.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<IActionResult> Product(Guid productId)
+        public async Task<IActionResult> Product(Guid id)
         {
-            var product = await _productService.GetProductById(productId);
+            var product = await _productService.GetProductById(id);
             var model = new ProductViewModel(CategoryMenuItems, product);
             return View(model);
         }

@@ -2253,7 +2253,9 @@ background: #EC4445;
   float: left;
   margin: 15px 0 0;
 }
-.product-filter ul li a {}
+.product-filter ul li a {
+    color: #26ACCE!important;
+}
 .product-filter ul li {
   display: inline-block;
   margin-right: 1rem;

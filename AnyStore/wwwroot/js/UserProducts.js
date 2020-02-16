@@ -110,6 +110,8 @@
             productHtml2 = productHtml2.replace(/{{productName}}/g, d.title);
             productHtml1 = productHtml1.replace(/{{price}}/g, d.sellingPrice);
             productHtml2 = productHtml2.replace(/{{price}}/g, d.sellingPrice);
+            productHtml1 = productHtml1.replace(/{{id}}/g, d.id);
+            productHtml2 = productHtml2.replace(/{{id}}/g, d.id);
             $("#display-1-1 .listview").append(productHtml1);
             $("#display-1-2 .listview").append(productHtml2);
         });        
