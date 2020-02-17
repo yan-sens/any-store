@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Настройки";
+    Layout = "_AdminLayout";
+}
+
+<h1>Настройки</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <h3>Валюта</h3>
+            <div id="currency_grid"></div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/Settings.js"></script>
+<script>
+    if (SettingsContext)
+        SettingsContext.init();
+
+</script>

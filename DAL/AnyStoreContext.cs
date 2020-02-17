@@ -13,6 +13,7 @@ namespace DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Currency> Currencies { get; set; }        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

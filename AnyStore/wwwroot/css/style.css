@@ -2418,8 +2418,13 @@ transition: border 0.2s ease-in-out 0s;
   padding: 12px 0;
 }
 .text-stock {
-  color: #26acce;
   font-weight: bold;
+}
+.text-stock.available {
+    color: #26acce;
+}
+.text-stock.unavailable {
+    color: #E95668;
 }
 .product-select label {
   font-size: 18px;

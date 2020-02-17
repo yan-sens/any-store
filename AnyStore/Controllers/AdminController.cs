@@ -35,6 +35,11 @@ namespace AnyStore.Controllers
         {
             return View();
         }
+        [Authorize]
+        public IActionResult Settings()
+        {
+            return View();
+        }
 
         [Authorize]
         public IActionResult Warehouse()

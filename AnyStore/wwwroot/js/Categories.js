@@ -15,7 +15,7 @@
 
     context.init = function () {
 
-        $(".as-nav-link[name=categories]").css("color", "#F46A1C");        
+        $(".as-nav-link[name=categories]").css("color", "#00b0ff");        
 
         context.DataGrid = $("#dvCategories").kendoGrid({
             dataSource: {

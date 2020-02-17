@@ -83,7 +83,17 @@
                 <p class="short-description">@Model.Product.Description</p>
                 <hr />
                 <span class="current-price">@Model.Product.SellingPrice</span>
-                <span class="item-stock">Наличие: <span class="text-stock">На складе</span></span>
+                <span class="item-stock">
+                    Наличие:
+                    @if (Model.Product.Availability)
+                    {
+                        <span class="text-stock available">На складе</span>
+                    }
+                    else
+                    {
+                        <span class="text-stock unavailable">Нет в наличии</span>
+                    }
+                </span>
             </div>
             <div class="about-product">
                 <div class="product-select product-color">

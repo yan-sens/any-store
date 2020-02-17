@@ -2,9 +2,14 @@
     position: absolute;
     width: 100%;
     min-height: 920px;
+    background-color: #363636;
+    color: #d5d5d5;
 }
 main {
     min-height: 820px;
+}
+nav {
+    background-color: #474747!important;
 }
 .admin-main {
     width: 100%;
@@ -27,10 +32,6 @@ main {
 }
 .grid-header {
     display: flex;
-    background-image: none,linear-gradient(to bottom,rgba(255,255,255,.6) 0,rgba(255,255,255,.0) 100%);
-    background-position: 50% 50%;
-    background-color: #e3e3e3;
-    border: 1px solid #c5c5c5;
 }
 .grid-header-label {
     width: 70%;
@@ -44,7 +45,7 @@ main {
     padding: 7px 15px;
 }
 .navbar-brand {
-    color: #F46A1C!important;
+    color: #00b0ff!important;
 }
 .flex-grow-1 {
      flex-grow: unset!important; 
@@ -55,7 +56,7 @@ a.as-nav-link {
 }
 .as-nav-link:hover {
     text-decoration: none;
-    color: #F46A1C!important;
+    color: #00B0FF !important;
 }
 .add-window {
     display: none;
