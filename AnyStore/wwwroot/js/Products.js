@@ -3,9 +3,21 @@
 
 (function (context) {
 
+    context.DataGrid = null;
+    context.ProductWindow = null;
+    context.ProductNameInput = null;
+    context.ProductTitleInput = null;
+    context.ProductDescriptionTextArea = null;
+    context.CategoriesDropPown = null;
+    context.IsProductEdit = false;
+    context.EditedProductId = null;
+    context.ProductPriceInput = null;
+    context.ProductImageUploader = null;
+    context.ProductImagesUploader = null;
+
     context.init = function () {
 
-        $(".as-nav-link[name=products]").css("color", "#00b0ff");     
+        $(".as-nav-link[name=products]").addClass("k-state-selected");    
 
         context.DataGrid = $("#dvProducts").kendoGrid({
             dataSource: {
@@ -19,9 +31,11 @@
                     });
                 }
             },
-            height: 550,
+            height: 700,
             sortable: true,
             selectable: true,
+            filterable: true,
+            groupable: true,
             editable: "popup",
             pageable: {
                 refresh: true,
@@ -41,9 +55,6 @@
                 field: "manufacture",
                 title: "Производитель"
             }, {
-                field: "purchasePrice",
-                title: "Закупочная цена"
-            }, {
                 field: "sellingPrice",
                 title: "Цена продажи"
             }, {
@@ -61,18 +72,82 @@
             }],
             remove: function (e) {
                 console.log("Removing...", e.model.name);
-                context.removeCategory(e.model.id);
+                context.removeProduct(e.model.id);
             }
         }).data("kendoGrid");
 
-        context.openEditProductWindow = function () {
-            console.log("openEditProductWindow");
-        };
+        context.CategoriesDropPown = $("#categories_ddl").kendoComboBox({
+            dataSource: {
+                transport: {
+                    read: "/Admin/GetCategoriesForProduct"
+                },
+                pageSize: 25
+            },
+            dataTextField: "name",
+            dataValueField: "id"
+        }).data("kendoComboBox");
 
-        context.removeCategory = function (id) {
-            
-        };
+        context.ProductWindow = $("#add_window").kendoWindow({ width: 500 }).data("kendoWindow");
+        context.ProductNameInput = $("#product_name_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
+        context.ProductTitleInput = $("#product_title_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
+        context.ProductPriceInput = $("#product_price_inp").kendoNumericTextBox().data("kendoNumericTextBox");
+        context.ProductDescriptionTextArea = $("#product_description_ta").kendoEditor().data("kendoEditor");
+        $("#open_add_product_window_btn").kendoButton({
+            click: function (e) {
+                context.IsProductEdit = false;
+                context.EditedProductId = null;
+                context.clearProductForm();
+                context.ProductWindow.title("Добавить продукт");
+                context.ProductWindow.center().open();
+            }
+        });
 
+        context.ProductImageUploader = $("#product_image").kendoUpload({
+            localization: {
+                select: "Главное фото"
+            },
+            multiple: false,
+            select: context.onImageSelect
+        });
+
+        context.ProductImagesUploader = $("#product_images").kendoUpload({
+            localization: {
+                select: "Остальные фото"
+            },
+            upload: context.onImageSelect
+        });
+
+        $("#save_product_btn").kendoButton({
+            click: function (e) {
+                
+            }
+        });
+
+        $("#cancel_save_product_btn").kendoButton({
+            click: function (e) {
+                context.ProductWindow.close();
+            }
+        });
+
+    };
+
+    context.onImageSelect = function (e) {
+        console.log(e);
+    };
+
+    context.openEditProductWindow = function () {
+        console.log("openEditProductWindow");
+    };
+
+    context.removeProduct = function (id) {
+
+    };
+
+    context.clearProductForm = function () {
+        context.ProductNameInput.value(null);
+        context.ProductTitleInput.value(null);
+        context.ProductDescriptionTextArea.value(null);
+        context.CategoriesDropPown.value(null);
     };
 
 })(ProductsContext);

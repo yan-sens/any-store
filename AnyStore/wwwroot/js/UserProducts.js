@@ -106,6 +106,8 @@
         $.each(products, function (i, d) {
             var productHtml1 = $("#product_template").html();
             var productHtml2 = $("#product_template2").html();
+            productHtml1 = productHtml1.replace(/{{productImage}}/g, d.image);
+            productHtml2 = productHtml2.replace(/{{productImage}}/g, d.image);
             productHtml1 = productHtml1.replace(/{{productName}}/g, d.title);
             productHtml2 = productHtml2.replace(/{{productName}}/g, d.title);
             productHtml1 = productHtml1.replace(/{{price}}/g, d.sellingPrice);

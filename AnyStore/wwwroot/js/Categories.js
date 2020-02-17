@@ -15,7 +15,7 @@
 
     context.init = function () {
 
-        $(".as-nav-link[name=categories]").css("color", "#00b0ff");        
+        $(".as-nav-link[name=categories]").addClass("k-state-selected");        
 
         context.DataGrid = $("#dvCategories").kendoGrid({
             dataSource: {
@@ -29,9 +29,11 @@
                     });
                 }
             },
-            height: 550,
+            height: 700,
             sortable: true,
+            filterable: true,
             selectable: true,
+            groupable: true,
             editable: "popup",
             pageable: {
                 refresh: true,
@@ -49,7 +51,7 @@
                 title: "Заголовок"
             }, {
                 field: "parentCategoryName",
-                title: "Родительская категория"
+                title: "Категория"
             }, {
                 template: function (dataItem) {
                     return "<a class='k-button k-button-icontext' onclick='CategoryContext.openEditCategoryWindow(\"" + dataItem.id + "\")'><span class='k-icon k-i-edit'></span></a>";

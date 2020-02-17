@@ -10,6 +10,7 @@ namespace Services.Interfaces
     {
         Task<List<Category>> GetCategories();
         Task<List<Category>> GetCategoriesWithChild();
+        Task<List<Category>> GetCategoriesForProduct();
         Task AddCategory(Category category);
         Task UpdateCategory(Category category);
         Task<Category> GetCategoryById(Guid categoryId);

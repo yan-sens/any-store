@@ -8,9 +8,6 @@
 main {
     min-height: 820px;
 }
-nav {
-    background-color: #474747!important;
-}
 .admin-main {
     width: 100%;
     height: 100%;
@@ -56,7 +53,6 @@ a.as-nav-link {
 }
 .as-nav-link:hover {
     text-decoration: none;
-    color: #00B0FF !important;
 }
 .add-window {
     display: none;
@@ -77,6 +73,7 @@ span.k-tool-text {
 .window-c {
     display: inline-block;
     margin-top: 20px;
+    width: 100%;
 }
 span.k-widget.k-combobox.k-header{
     width: 100%;
@@ -95,12 +92,12 @@ span.k-widget.k-combobox.k-header{
     background-color: #D5D5D5;
     color: #D5D5D5;
 }
-#save_category_btn {
+#save_category_btn, #save_product_btn {
     float: right;
     margin-top: 20px;
     margin-right: 15px;
 }
-#cancel_save_category_btn {
+#cancel_save_category_btn, #cancel_save_product_btn {
     margin-top: 20px;
     float: right;
     margin-bottom: 10px;

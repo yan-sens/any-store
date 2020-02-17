@@ -71,6 +71,12 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
+        public async Task<List<Category>> GetCategoriesForProduct()
+        {
+            return await _categoryService.GetCategoriesForProduct();
+        }
+
+        [Authorize]
         public async Task RemoveCategory(string id)
         {
             await _categoryService.RemoveCategory(Guid.Parse(id));

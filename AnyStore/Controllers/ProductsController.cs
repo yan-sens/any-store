@@ -1,7 +1,9 @@
 ﻿using AnyStore.Models;
+using Common.Models;
 using DAL.Models;
 using DAL.Models.Account;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +47,14 @@ namespace AnyStore.Controllers
         public async Task<List<Product>> GetProducts()
         {
             return await _productService.GetAllProducts();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> CreateProduct(SaveProductModel model)
+        {
+            await _productService.CreateProduct(model);
+
+            return RedirectToAction("Products", "Admin");
         }
     }
 }

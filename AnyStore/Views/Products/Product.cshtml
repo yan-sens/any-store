@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Product";
 }
+@using System.Web;
 <!-- Start Toch-Prond-Area -->
 <div class="toch-prond-area">
     <div class="row">
@@ -80,7 +81,7 @@
                     <a href="#">Write a review</a>
                 </p>
                 <hr />
-                <p class="short-description">@Model.Product.Description</p>
+                <p class="short-description">@Html.Raw(HttpUtility.HtmlDecode(Model.Product.Description))</p>
                 <hr />
                 <span class="current-price">@Model.Product.SellingPrice</span>
                 <span class="item-stock">

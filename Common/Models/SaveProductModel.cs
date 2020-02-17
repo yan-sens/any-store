@@ -1,20 +1,19 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
 
-namespace DAL.Models
+namespace Common.Models
 {
-    public class Product : BaseEntity
+    public class SaveProductModel
     {
         public string Name { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string AdditionalDescription { get; set; }
-        public byte[] Image { get; set; }
-        public int StartRate { get; set; }
         public decimal SellingPrice { get; set; }
         public Guid? CurrencyId { get; set; }
         public Guid CategoryId { get; set; }
-        [NotMapped]
-        public bool Availability { get; set; }
+        public IFormFile Image { get; set; }
+        public List<IFormFile> Images { get; set; }
     }
 }

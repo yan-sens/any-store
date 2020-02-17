@@ -1,4 +1,5 @@
-﻿using DAL.Models;
+﻿using Common.Models;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,5 +11,6 @@ namespace Services.Interfaces
         Task<List<Product>> GetAllProducts();
         Task<List<Product>> GetProductsByCategoryId(Guid categoryId);
         Task<Product> GetProductById(Guid productId);
+        Task CreateProduct(SaveProductModel model);
     }
 }

@@ -97,5 +97,10 @@ namespace Services.Services
                 await _dbContext.SaveChangesAsync();
             }                
         }
+
+        public async Task<List<Category>> GetCategoriesForProduct()
+        {
+            return await _dbContext.Categories.Where(x => !x.HasChildren).ToListAsync();
+        }
     }
 }

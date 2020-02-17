@@ -12,3 +12,6 @@
 /DAL/obj
 /Services/bin
 /Services/obj
+/.vs/config
+/AnyStore/.config
+/AnyStore/Properties/PublishProfiles

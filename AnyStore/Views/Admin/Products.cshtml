@@ -14,6 +14,34 @@
 </div>
 <div id="dvProducts"></div>
 
+<div class="add-window" id="add_window">
+    <form asp-action="CreateProduct" asp-controller="Products" method="post" enctype="multipart/form-data">
+        <div class="window-ls">
+            <label for="product_name_inp">Название</label><br />
+            <input name="Name" id="product_name_inp" /><br /><br />
+            <label for="product_title_inp">Заголовок</label><br />
+            <input name="Title" id="product_title_inp" />
+        </div>
+        <div class="window-rs">
+            <label for="categories_ddl">Родительская категория</label><br />
+            <input name="CategoryId" id="categories_ddl" /><br /><br />
+            <label for="product_price_inp">Цена</label><br />
+            <input name="SellingPrice" id="product_price_inp" />
+        </div>
+        <div class="window-c">
+            <input type="file" name="Image" id="product_image" />
+            <br />
+            <input type="file" name="Images" id="product_images" />
+        </div>
+        <div class="window-c">
+            <label for="product_description_ta">Описание</label>
+            <textarea name="Description" id="product_description_ta"></textarea>
+        </div>
+        <button id="cancel_save_product_btn" type="button">Отмена</button>
+        <button id="save_product_btn" type="submit">Сохранить</button>
+    </form>
+</div>
+
 <script src="~/js/Products.js"></script>
 <script>
     if (ProductsContext)
