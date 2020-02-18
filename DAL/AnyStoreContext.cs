@@ -19,10 +19,15 @@ namespace DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>().HasKey(x => new { x.Id });
-
             modelBuilder.Entity<Category>().HasMany(c => c.Categories)
                 .WithOne(c => c.ParentCategory)
                 .HasForeignKey(c => c.ParentCategoryId);
+
+            modelBuilder.Entity<ProductImage>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<Product>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<Product>().HasMany(c => c.Images)
+                .WithOne(c => c.Product)
+                .HasForeignKey(c => c.ProductId);
 
             base.OnModelCreating(modelBuilder);
         }

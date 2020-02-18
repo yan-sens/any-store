@@ -105,7 +105,9 @@
         $(".listview").children().remove();
         $.each(products, function (i, d) {
             var productHtml1 = $("#product_template").html();
-            var productHtml2 = $("#product_template2").html();
+            var productHtml2 = $("#product_template2").html();            
+            productHtml1 = productHtml1.replace(/{{productDescription}}/g, d.description);
+            productHtml2 = productHtml2.replace(/{{productDescription}}/g, d.description);
             productHtml1 = productHtml1.replace(/{{productImage}}/g, d.image);
             productHtml2 = productHtml2.replace(/{{productImage}}/g, d.image);
             productHtml1 = productHtml1.replace(/{{productName}}/g, d.title);

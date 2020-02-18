@@ -50,11 +50,11 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> CreateProduct(SaveProductModel model)
+        public async Task CreateProduct(SaveProductModel model)
         {
             await _productService.CreateProduct(model);
 
-            return RedirectToAction("Products", "Admin");
+            //return RedirectToAction("Products", "Admin");
         }
     }
 }

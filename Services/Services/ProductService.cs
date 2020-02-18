@@ -26,7 +26,7 @@ namespace Services.Services
 
         public async Task<Product> GetProductById(Guid productId)
         {
-            return await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == productId);
+            return await _dbContext.Products.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == productId);
         }
 
         public async Task<List<Product>> GetProductsByCategoryId(Guid categoryId)
@@ -65,11 +65,11 @@ namespace Services.Services
             {
                 foreach (var _image in model.Images)
                 {
-                    ProductImage pi = new ProductImage { PatientId = product.Id };
+                    ProductImage pi = new ProductImage { ProductId = product.Id };
                     byte[] imageData = null;
-                    using (var binaryReader = new BinaryReader(model.Image.OpenReadStream()))
+                    using (var binaryReader = new BinaryReader(_image.OpenReadStream()))
                     {
-                        imageData = binaryReader.ReadBytes((int)model.Image.Length);
+                        imageData = binaryReader.ReadBytes((int)_image.Length);
                     }
                     pi.Image = imageData;
 

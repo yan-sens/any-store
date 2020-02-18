@@ -7,7 +7,7 @@
 
     context.init = function () {
 
-        $(".as-nav-link[name=settings]").css("color", "#00b0ff");   
+        $(".as-nav-link[name=settings]").addClass("k-state-selected");       
 
         context.currencyGrid = $("#currency_grid").kendoGrid({
             dataSource: {

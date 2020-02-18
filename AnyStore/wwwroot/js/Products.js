@@ -14,6 +14,7 @@
     context.ProductPriceInput = null;
     context.ProductImageUploader = null;
     context.ProductImagesUploader = null;
+    context.ProductValidator = null;
 
     context.init = function () {
 
@@ -97,7 +98,7 @@
                 context.IsProductEdit = false;
                 context.EditedProductId = null;
                 context.clearProductForm();
-                context.ProductWindow.title("Добавить продукт");
+                context.ProductWindow.title("Добавить товар");
                 context.ProductWindow.center().open();
             }
         });
@@ -107,19 +108,33 @@
                 select: "Главное фото"
             },
             multiple: false,
-            select: context.onImageSelect
+            select: context.onImageSelect,
+            validation: {
+                //maxFileSize: 300000,
+                allowedExtensions: [".jpg", ".jpeg", ".png"]                   
+            }
         });
 
         context.ProductImagesUploader = $("#product_images").kendoUpload({
             localization: {
                 select: "Остальные фото"
             },
-            upload: context.onImageSelect
+            upload: context.onImageSelect,
+            validation: {
+                //maxFileSize: 300000,
+                allowedExtensions: [".jpg", ".jpeg", ".png"]    
+            }
         });
 
         $("#save_product_btn").kendoButton({
             click: function (e) {
-                
+                if (context.ProductValidator.validate()) {
+                    var url = "/Products/CreateProduct";
+                    $.post(url, $('form').serialize(), function (data) {
+                        context.ProductWindow.close();
+                        context.DataGrid.dataSource.read();
+                    });
+                }                
             }
         });
 
@@ -128,6 +143,13 @@
                 context.ProductWindow.close();
             }
         });
+
+        context.ProductValidator = $("#product_form").kendoValidator({
+            messages: {
+                // overrides the built-in message for the required rule
+                required: "Это обязательно"
+            }
+        }).data("kendoValidator");
 
     };
 

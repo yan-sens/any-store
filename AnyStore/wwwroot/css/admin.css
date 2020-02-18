@@ -21,9 +21,6 @@ main {
 .admin-body {
     width: 80%;
 }
-.k-current-page{
-    display: none!important;
-}
 .k-pager-sizes{
     display: none!important;
 }
@@ -32,7 +29,6 @@ main {
 }
 .grid-header-label {
     width: 70%;
-    color: #6d6d6d;
     padding-left: 10px;
     padding-top: 5px;
 }
@@ -105,4 +101,19 @@ span.k-widget.k-combobox.k-header{
 .k-grid tbody .k-button {
     min-width: unset;
     padding-right: 3px;
+}
+.w100{
+    width: 100%;
+}
+.k-widget.k-tooltip-validation {
+    position: absolute;
+    top: 33px;
+    left: 0px;
+}
+.k-upload .k-upload-button{
+    overflow: inherit;
+}
+.k-upload-button input{
+    width: 100%;
+    height: 100%;
 }

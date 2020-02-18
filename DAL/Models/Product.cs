@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
@@ -16,5 +17,6 @@ namespace DAL.Models
         public Guid CategoryId { get; set; }
         [NotMapped]
         public bool Availability { get; set; }
+        public List<ProductImage> Images { get; set; }
     }
 }
