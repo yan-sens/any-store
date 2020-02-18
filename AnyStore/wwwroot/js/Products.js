@@ -113,7 +113,7 @@
                 //maxFileSize: 300000,
                 allowedExtensions: [".jpg", ".jpeg", ".png"]                   
             }
-        });
+        }).data("kendoUpload");
 
         context.ProductImagesUploader = $("#product_images").kendoUpload({
             localization: {
@@ -124,15 +124,26 @@
                 //maxFileSize: 300000,
                 allowedExtensions: [".jpg", ".jpeg", ".png"]    
             }
-        });
+        }).data("kendoUpload");
 
         $("#save_product_btn").kendoButton({
             click: function (e) {
                 if (context.ProductValidator.validate()) {
                     var url = "/Products/CreateProduct";
-                    $.post(url, $('form').serialize(), function (data) {
-                        context.ProductWindow.close();
-                        context.DataGrid.dataSource.read();
+                    var formData = new FormData($('#product_form')[0]);
+                    kendo.ui.progress($("#product_form"), true);
+                    $.ajax({
+                        url: url,
+                        type: 'POST',
+                        success: function () {
+                            context.ProductWindow.close();
+                            context.DataGrid.dataSource.read();
+                            kendo.ui.progress($("#product_form"), false);
+                        },
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false
                     });
                 }                
             }
@@ -146,7 +157,6 @@
 
         context.ProductValidator = $("#product_form").kendoValidator({
             messages: {
-                // overrides the built-in message for the required rule
                 required: "Это обязательно"
             }
         }).data("kendoValidator");

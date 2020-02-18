@@ -51,7 +51,7 @@
                 title: "Заголовок"
             }, {
                 field: "parentCategoryName",
-                title: "Категория"
+                title: "Родительская категория"
             }, {
                 template: function (dataItem) {
                     return "<a class='k-button k-button-icontext' onclick='CategoryContext.openEditCategoryWindow(\"" + dataItem.id + "\")'><span class='k-icon k-i-edit'></span></a>";

@@ -24,6 +24,7 @@
     context.init = function (categoryId) {
 
         context.categoryId = categoryId;
+        kendo.ui.progress($(".product"), true);
 
         context.productsDataSource = new kendo.data.DataSource({
             transport: {
@@ -34,6 +35,7 @@
                 if (data.response)
                     setTimeout(function () {
                         context.renderProducts(context.productsDataSource.view());
+                        kendo.ui.progress($(".product"), false);
                     });
             },
             pageSize: context.viewModel.pagerPageSize

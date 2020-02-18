@@ -23,15 +23,15 @@
             <input class="w100" name="Title" id="product_title_inp" required />
         </div>
         <div class="window-rs">
-            <label for="categories_ddl">Родительская категория</label><br />
+            <label for="categories_ddl">Категория</label><br />
             <input class="w100" name="CategoryId" id="categories_ddl" required /><br /><br />
             <label for="product_price_inp">Цена</label><br />
             <input class="w100" name="SellingPrice" value="0" min="0" id="product_price_inp" />
         </div>
         <div class="window-c">
-            <input type="file" name="Image" id="product_image" required />
+            <input type="file" name="Image" id="product_image" />
             <br />
-            <input type="file" name="Images" id="product_images" required />
+            <input type="file" name="Images" id="product_images" />
         </div>
         <div class="window-c">
             <label for="product_description_ta">Описание</label>
@@ -42,7 +42,7 @@
     </form>
 </div>
 
-<script src="~/js/Products.js"></script>
+<script src="~/js/Products.js?v=1"></script>
 <script>
     if (ProductsContext)
         ProductsContext.init();
