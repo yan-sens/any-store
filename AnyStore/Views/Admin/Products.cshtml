@@ -16,31 +16,64 @@
 
 <div class="add-window" id="add_window">
     <form id="product_form" enctype="multipart/form-data">
-        <div class="window-ls">
-            <label for="product_name_inp">Название</label><br />
-            <input class="w100" name="Name" id="product_name_inp" required /><br /><br />
-            <label for="product_title_inp">Заголовок</label><br />
-            <input class="w100" name="Title" id="product_title_inp" required />
+        <div class="form-container">
+            <div class="form-25">
+                <label for="product_name_inp">Название</label><br />
+                <input class="w100" name="Name" id="product_name_inp" required /><br /><br />
+            </div>
+            <div class="form-25">
+                <label for="product_title_inp">Заголовок</label><br />
+                <input class="w100" name="Title" id="product_title_inp" required />
+            </div>
+            <div class="form-25">
+                <label for="product_price_inp">Цена</label><br />
+                <input class="w100" name="SellingPrice" value="0" min="0" id="product_price_inp" />
+            </div>
+            <div class="form-25">
+                <label for="categories_ddl">Категория</label><br />
+                <input class="w100" name="CategoryId" id="categories_ddl" required /><br /><br />
+            </div>
         </div>
-        <div class="window-rs">
-            <label for="categories_ddl">Категория</label><br />
-            <input class="w100" name="CategoryId" id="categories_ddl" required /><br /><br />
-            <label for="product_price_inp">Цена</label><br />
-            <input class="w100" name="SellingPrice" value="0" min="0" id="product_price_inp" />
+
+        <div class="form-container">
+            <div class="form-50">
+                <div id="product_image_wrapper">
+                    <input type="file" name="Image" id="product_image" />
+                    <div id="product_listView"></div>
+                </div>
+            </div>
+            <div class="form-50">
+                <div id="product_images_wrapper">
+                    <input type="file" name="Images" id="product_images" />
+                    <div id="products_listView"></div>
+                </div>
+            </div>
         </div>
-        <div class="window-c">
-            <input type="file" name="Image" id="product_image" />
-            <br />
-            <input type="file" name="Images" id="product_images" />
+
+        <div class="form-container">
+            <div class="form-50">
+                <label for="product_description_ta">Описание</label>
+                <textarea name="Description" id="product_description_ta"></textarea>
+            </div>
+            <div class="form-50">
+                <label for="product_description2_ta">Дополнительное описание</label>
+                <textarea name="Description" id="product_description2_ta"></textarea>
+            </div>
         </div>
-        <div class="window-c">
-            <label for="product_description_ta">Описание</label>
-            <textarea name="Description" id="product_description_ta"></textarea>
-        </div>
+
         <button id="cancel_save_product_btn" type="button">Отмена</button>
         <button id="save_product_btn" type="button">Сохранить</button>
     </form>
 </div>
+
+<script type="text/x-kendo-tmpl" id="image_template">
+    <div>
+        <img class="image-template" src="data:image/jpeg;base64,#:src#" />
+        <div class="edit-buttons">
+            <a class="k-button k-button-icontext k-delete-button" href="\\#"><span class="k-icon k-i-delete"></span></a>
+        </div>
+    </div>
+</script>
 
 <script src="~/js/Products.js?v=1"></script>
 <script>

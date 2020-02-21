@@ -50,11 +50,27 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
+        public async Task<List<ProductImage>> GetProductImagesByProductId(Guid productId)
+        {
+            return await _productService.GetProductImagesByProductId(productId);
+        }
+
+        [Authorize]
         public async Task CreateProduct(SaveProductModel model)
         {
             await _productService.CreateProduct(model);
+        }
 
-            //return RedirectToAction("Products", "Admin");
+        [Authorize]
+        public async Task UpdateProduct(SaveProductModel model)
+        {
+            await _productService.UpdateProduct(model);
+        }
+        
+        [Authorize]
+        public async Task RemoveProduct(string id)
+        {
+            await _productService.RemoveProduct(Guid.Parse(id));
         }
     }
 }

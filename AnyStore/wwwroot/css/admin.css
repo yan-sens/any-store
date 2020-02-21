@@ -100,7 +100,6 @@ span.k-widget.k-combobox.k-header{
 }
 .k-grid tbody .k-button {
     min-width: unset;
-    padding-right: 3px;
 }
 .w100{
     width: 100%;
@@ -116,4 +115,35 @@ span.k-widget.k-combobox.k-header{
 .k-upload-button input{
     width: 100%;
     height: 100%;
+}
+.image-template{
+    height: 100px;
+    margin: 10px;
+}
+#product_listView, #products_listView {
+    border-top: none;
+}
+.form-25 {
+    width: 24%;
+    float: left;
+    padding: 0.5%;
+}
+.form-50 {
+    width: 49%;
+    float: left;
+    padding: 0.5%;
+}
+.form-container {
+    width: 100%;
+    margin: auto;
+    display: flex;
+}
+.edit-buttons{
+    float: right;
+}
+[aria-selected=false]>.edit-buttons{
+    display: none;
+}
+[aria-selected=true] > .edit-buttons {
+    display: block;
 }

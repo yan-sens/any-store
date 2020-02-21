@@ -10,7 +10,7 @@ namespace DAL.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string AdditionalDescription { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public int StartRate { get; set; }
         public decimal SellingPrice { get; set; }
         public Guid? CurrencyId { get; set; }

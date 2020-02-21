@@ -10,7 +10,10 @@ namespace Services.Interfaces
     {
         Task<List<Product>> GetAllProducts();
         Task<List<Product>> GetProductsByCategoryId(Guid categoryId);
+        Task<List<ProductImage>> GetProductImagesByProductId(Guid productId);
         Task<Product> GetProductById(Guid productId);
         Task CreateProduct(SaveProductModel model);
+        Task UpdateProduct(SaveProductModel model);
+        Task RemoveProduct(Guid id);
     }
 }

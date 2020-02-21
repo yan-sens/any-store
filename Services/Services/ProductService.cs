@@ -29,6 +29,11 @@ namespace Services.Services
             return await _dbContext.Products.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == productId);
         }
 
+        public async Task<List<ProductImage>> GetProductImagesByProductId(Guid productId)
+        {
+            return await _dbContext.ProductImages.Where(x => x.ProductId == productId).ToListAsync();
+        }
+
         public async Task<List<Product>> GetProductsByCategoryId(Guid categoryId)
         {
             return await _dbContext.Products.Where(x => x.CategoryId == categoryId).ToListAsync();
@@ -45,18 +50,9 @@ namespace Services.Services
                 CategoryId = model.CategoryId,
                 CurrencyId = model.CurrencyId,
                 SellingPrice = model.SellingPrice,
+                Image = model.Image,
                 CreateDate = DateTime.Now
             };
-
-            if (model.Image != null)
-            {
-                byte[] imageData = null;
-                using (var binaryReader = new BinaryReader(model.Image.OpenReadStream()))
-                {
-                    imageData = binaryReader.ReadBytes((int)model.Image.Length);
-                }
-                product.Image = imageData;
-            }
 
             _dbContext.Products.Add(product);
             await _dbContext.SaveChangesAsync();
@@ -65,17 +61,58 @@ namespace Services.Services
             {
                 foreach (var _image in model.Images)
                 {
-                    ProductImage pi = new ProductImage { ProductId = product.Id };
-                    byte[] imageData = null;
-                    using (var binaryReader = new BinaryReader(_image.OpenReadStream()))
-                    {
-                        imageData = binaryReader.ReadBytes((int)_image.Length);
-                    }
-                    pi.Image = imageData;
-
+                    ProductImage pi = new ProductImage { ProductId = product.Id, Image = _image };
                     _dbContext.ProductImages.Add(pi);
                 }
             }
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task UpdateProduct(SaveProductModel model)
+        {
+            var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == model.Id);
+
+            if (product == null)
+                return;
+
+            product.Name = model.Name;
+            product.Title = model.Title;
+            product.Description = model.Description;
+            product.AdditionalDescription = model.AdditionalDescription;
+            product.CategoryId = model.CategoryId;
+            product.CurrencyId = model.CurrencyId;
+            product.SellingPrice = model.SellingPrice;
+            product.Image = model.Image;
+
+            _dbContext.Update(product);
+
+            var images = await _dbContext.ProductImages.Where(x => x.ProductId == model.Id).ToListAsync();
+            foreach (var img in images)
+                _dbContext.Remove(img);
+
+            if (model.Images != null)
+            {
+                foreach (var _image in model.Images)
+                {
+                    ProductImage pi = new ProductImage { ProductId = product.Id, Image = _image };
+                    _dbContext.ProductImages.Add(pi);
+                }
+            }
+
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task RemoveProduct(Guid id)
+        {
+            var product = await _dbContext.Products.FirstOrDefaultAsync(x => x.Id == id);
+            var productImages = await _dbContext.ProductImages.Where(x => x.ProductId == id).ToListAsync();
+
+            if (product != null)
+                _dbContext.Remove(product);
+
+            if (productImages != null && productImages.Count > 0)
+                productImages.ForEach(x => _dbContext.Remove(x));
 
             await _dbContext.SaveChangesAsync();
         }

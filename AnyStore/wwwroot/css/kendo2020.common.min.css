@@ -729,7 +729,7 @@ html .k-error-colored {
 
 .k-button {
     margin: 0;
-    padding: 4px 8px;
+    padding: 4px 6px;
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
@@ -785,13 +785,6 @@ html .k-error-colored {
 .k-button-icontext {
     overflow: visible
 }
-
-    .k-button-icontext .k-icon, .k-button-icontext .k-image, .k-button-icontext .k-sprite {
-        margin-right: 3px;
-        margin-right: .1875em;
-        margin-left: -2px;
-        margin-left: -.125em
-    }
 
 .k-button.k-state-disabled, .k-button[disabled], .k-state-disabled .k-button {
     cursor: default;

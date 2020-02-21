@@ -6,6 +6,7 @@ namespace Common.Models
 {
     public class SaveProductModel
     {
+        public Guid? Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -13,7 +14,7 @@ namespace Common.Models
         public decimal SellingPrice { get; set; }
         public Guid? CurrencyId { get; set; }
         public Guid CategoryId { get; set; }
-        public IFormFile Image { get; set; }
-        public List<IFormFile> Images { get; set; }
+        public string Image { get; set; }
+        public List<string> Images { get; set; }
     }
 }
