@@ -85,6 +85,7 @@
                 context.IsCategoryEdit = false;
                 context.EditedCategoryId = null;
                 context.clearCategoryForm();
+                context.CategoryChildSwitch.value(false);
                 context.CategoryChildSwitch.enable(true);
                 context.CategoryWindow.title("Добавить категорию");
                 context.CategoryWindow.center().open();

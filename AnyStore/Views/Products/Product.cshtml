@@ -4,183 +4,154 @@
 }
 @using System.Web;
 <!-- Start Toch-Prond-Area -->
-<div class="toch-prond-area">
-    <div class="row">
-        <div class="col-md-5 col-sm-5 col-xs-12">
-            <div class="clear"></div>
-            <div class="tab-content">
-                @{
-                    var active = "active";
-                    foreach (var item in Model.Product.Images)
-                    {
-                        <div role="tabpanel" class="tab-pane @active" id="@item.Id">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="toch-photo">
-                                        <a href="#"><img src="data:image/jpeg;base64,@item.Image" data-imagezoom="true" alt="#" /></a>
+    <div class="toch-prond-area">
+        <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+                <div class="clear"></div>
+                <div class="tab-content">
+                    @{
+                        var active = "active";
+                        foreach (var item in Model.Product.Images)
+                        {
+                            <div role="tabpanel" class="tab-pane @active" id="@item.Id">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="toch-photo">
+                                            <a href="#"><img src="data:image/jpeg;base64,@item.Image" data-imagezoom="true" alt="#" /></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        active = String.Empty;
-                    }
-                }
-            </div>
-            <!-- Start Toch-prond-Menu -->
-            <div class="toch-prond-menu">
-                <ul role="tablist">
-                    @{
-                        active = "active";
-                        foreach (var item in Model.Product.Images)
-                        {
-                            <li role="presentation" class="@active"><a href="#@item.Id" role="tab" data-toggle="tab"><img src="data:image/jpeg;base64,@item.Image" alt="#" /></a></li>
 
                             active = String.Empty;
                         }
                     }
-                </ul>
+                </div>
+                <!-- Start Toch-prond-Menu -->
+                <div class="toch-prond-menu">
+                    <ul role="tablist">
+                        @{
+                            active = "active";
+                            foreach (var item in Model.Product.Images)
+                            {
+                                <li role="presentation" class="@active"><a href="#@item.Id" role="tab" data-toggle="tab"><img src="data:image/jpeg;base64,@item.Image" alt="#" /></a></li>
+
+                                active = String.Empty;
+                            }
+                        }
+                    </ul>
+                </div>
+                <!-- End Toch-prond-Menu -->
             </div>
-            <!-- End Toch-prond-Menu -->
-        </div>
-        <div class="col-md-7 col-sm-7 col-xs-12">
-            <h2 class="title-product">@Model.Product.Title</h2>
-            <div class="about-toch-prond">
-                <p>
-                    <span class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
+            <div class="col-md-7 col-sm-7 col-xs-12">
+                <h2 class="title-product">@Model.Product.Title</h2>
+                <div class="about-toch-prond">
+                    <p>
+                        <span class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </span>
+                        <a href="#">1 reviews</a>
+                        /
+                        <a href="#">Write a review</a>
+                    </p>
+                    <hr />
+                    <p class="short-description">@Html.Raw(HttpUtility.HtmlDecode(Model.Product.Description))</p>
+                    <hr />
+                    <span class="current-price">@Model.Product.CurrencyName @Model.Product.SellingPrice</span>
+                    <span class="item-stock">
+                        Наличие:
+                        @if (Model.Product.Availability)
+                        {
+                            <span class="text-stock available">На складе</span>
+                        }
+                        else
+                        {
+                            <span class="text-stock unavailable">Нет в наличии</span>
+                        }
                     </span>
-                    <a href="#">1 reviews</a>
-                    /
-                    <a href="#">Write a review</a>
-                </p>
-                <hr />
-                <p class="short-description">@Html.Raw(HttpUtility.HtmlDecode(Model.Product.Description))</p>
-                <hr />
-                <span class="current-price">@Model.Product.CurrencyName @Model.Product.SellingPrice</span>
-                <span class="item-stock">
-                    Наличие:
-                    @if (Model.Product.Availability)
-                    {
-                        <span class="text-stock available">На складе</span>
-                    }
-                    else
-                    {
-                        <span class="text-stock unavailable">Нет в наличии</span>
-                    }
-                </span>
-            </div>
-            <div class="about-product">
-                <div class="product-select product-color">
-                    <label><sup>*</sup>Color</label>
-                    <select class="form-control">
-                        <option> --- Please Select --- </option>
-                        <option>Black (+$10.00) </option>
-                        <option>White (+$8.00)</option>
-                        <option>Pink (+$30.00)</option>
-                        <option>Green (+$30.00)</option>
-                    </select>
                 </div>
-                <div class="product-select product-Size">
-                    <label><sup>*</sup>Size</label>
-                    <select class="form-control">
-                        <option> --- Please Select --- </option>
-                        <option>Small (+$10.00)</option>
-                        <option>Medium (+$20.00)</option>
-                        <option>Large (+$30.00)</option>
-                        <option>Extra Large (+$35.00)</option>
-                    </select>
+                <div class="about-product">
+
                 </div>
-                <div class="product-select product-type">
-                    <label><sup>*</sup>Text</label>
-                    <input type="text" class="form-control" placeholder="Text" />
+                <div class="product-quantity">
+                    <span>Qty</span>
+                    <input type="number" placeholder="1" />
+                    <button type="submit" class="toch-button toch-add-cart">Add to Cart</button>
+                    <button type="submit" class="toch-button toch-wishlist">wishlist</button>
+                    <button type="submit" class="toch-button toch-compare">Compare</button>
                 </div>
-                <div class="product-select product-date">
-                    <label><sup>*</sup>Date</label>
-                    <input type="text" class="form-control" placeholder="2016/02/15" />
-                </div>
-                <div class="product-select product-checkbox">
-                    <label><sup>*</sup>Checkbox</label>
-                    <label><input type="checkbox" /> Checkbox 1  (+$5.00)</label>
-                </div>
-                <div class="product-select product-button">
-                    <button type="submit">
-                        <i class="fa fa-calendar"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="product-quantity">
-                <span>Qty</span>
-                <input type="number" placeholder="1" />
-                <button type="submit" class="toch-button toch-add-cart">Add to Cart</button>
-                <button type="submit" class="toch-button toch-wishlist">wishlist</button>
-                <button type="submit" class="toch-button toch-compare">Compare</button>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="toch-reviews">
-                <div class="toch-table">
-                    <table class="table table-striped table-bordered">
-                        <tbody>
-                            <tr>
-                                <td><strong>Пётр Сергеевич Пупяков</strong></td>
-                                <td class="text-right"><strong>16/02/2020</strong></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <p>Очень понравился этот продукт в дейсвии.</p>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star"></i></span>
-                                    <span><i class="fa fa-star-o"></i></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="toch-review-title">
-                    <h2>Оставить комментарий</h2>
-                </div>
-                <div class="review-message">
-                    <div class="col-xs-12">
-                        <p>
-                            <sup>*</sup>Your Name <br>
-                            <input type="text" class="form-control" />
-                        </p>
-                        <p>
-                            <sup>*</sup>Your Name <br>
-                            <textarea class="form-control"></textarea>
-                        </p>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Product.AdditionalDescription))
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="toch-reviews">
+                    <div class="toch-table">
+                        <table class="table table-striped table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td><strong>Пётр Сергеевич Пупяков</strong></td>
+                                    <td class="text-right"><strong>16/02/2020</strong></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <p>Очень понравился этот продукт в дейсвии.</p>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star"></i></span>
+                                        <span><i class="fa fa-star-o"></i></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="help-block">
-                        <span class="note">Note:</span>
-                        HTML is not translated!
+                    <div class="toch-review-title">
+                        <h2>Оставить комментарий</h2>
                     </div>
-                    <div class="get-rating">
-                        <span><sup>*</sup>Rating </span>
-                        Bad
-                        <input type="radio" value="1" name="rating" />
-                        <input type="radio" value="2" name="rating" />
-                        <input type="radio" value="3" name="rating" />
-                        <input type="radio" value="4" name="rating" />
-                        <input type="radio" value="5" name="rating" />
-                        Good
-                    </div>
-                    <div class="buttons clearfix">
-                        <button class="btn btn-primary pull-right">Continue</button>
+                    <div class="review-message">
+                        <div class="col-xs-12">
+                            <p>
+                                <sup>*</sup>Your Name <br>
+                                <input type="text" class="form-control" />
+                            </p>
+                            <p>
+                                <sup>*</sup>Your Name <br>
+                                <textarea class="form-control"></textarea>
+                            </p>
+                        </div>
+                        <div class="help-block">
+                            <span class="note">Note:</span>
+                            HTML is not translated!
+                        </div>
+                        <div class="get-rating">
+                            <span><sup>*</sup>Rating </span>
+                            Bad
+                            <input type="radio" value="1" name="rating" />
+                            <input type="radio" value="2" name="rating" />
+                            <input type="radio" value="3" name="rating" />
+                            <input type="radio" value="4" name="rating" />
+                            <input type="radio" value="5" name="rating" />
+                            Good
+                        </div>
+                        <div class="buttons clearfix">
+                            <button class="btn btn-primary pull-right">Continue</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 <!-- End Toch-Prond-Area -->
 <!-- Image zoom js
         ============================================ -->

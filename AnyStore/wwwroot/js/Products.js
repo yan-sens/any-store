@@ -100,7 +100,7 @@
             dataValueField: "id"
         }).data("kendoComboBox");
 
-        context.ProductWindow = $("#add_window").kendoWindow({ width: 1000 }).data("kendoWindow");
+        context.ProductWindow = $("#add_window").kendoWindow({ width: 1200 }).data("kendoWindow");
         context.ProductNameInput = $("#product_name_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.ProductTitleInput = $("#product_title_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.ProductPriceInput = $("#product_price_inp").kendoNumericTextBox().data("kendoNumericTextBox");
@@ -262,6 +262,7 @@
         context.ProductTitleInput.value(item.title);
         context.ProductPriceInput.value(item.sellingPrice);
         context.ProductDescriptionTextArea.value(item.description);
+        context.ProductDescription2TextArea.value(item.additionalDescription);
         context.CategoriesDropPown.value(item.categoryId);
         context.CurrenciesDropPown.value(item.currencyId);
         kendo.ui.progress($("#product_form"), true);
