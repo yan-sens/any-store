@@ -21,12 +21,26 @@ namespace Services.Services
         }
         public async Task<List<Product>> GetAllProducts()
         {
-            return await _dbContext.Products.ToListAsync();
+            var result = await _dbContext.Products.Include(x => x.Currency).ToListAsync();
+            result.ForEach(x => {                
+                if (x.Currency != null)
+                {
+                    x.Currency.Products = null;
+                    x.CurrencyName = x.Currency.Display;
+                }
+            });
+            return result;
         }
 
         public async Task<Product> GetProductById(Guid productId)
         {
-            return await _dbContext.Products.Include(x => x.Images).FirstOrDefaultAsync(x => x.Id == productId);
+            var result = await _dbContext.Products.Include(x => x.Images).Include(x => x.Currency).FirstOrDefaultAsync(x => x.Id == productId);
+            if (result != null)
+            {
+                result.Currency.Products = null;
+                result.CurrencyName = result.Currency.Display;
+            }
+            return result;
         }
 
         public async Task<List<ProductImage>> GetProductImagesByProductId(Guid productId)
@@ -36,7 +50,15 @@ namespace Services.Services
 
         public async Task<List<Product>> GetProductsByCategoryId(Guid categoryId)
         {
-            return await _dbContext.Products.Where(x => x.CategoryId == categoryId).ToListAsync();
+            var result = await _dbContext.Products.Include(x => x.Currency).Where(x => x.CategoryId == categoryId).ToListAsync();
+            result.ForEach(x => {
+                if (x.Currency != null)
+                {
+                    x.Currency.Products = null;
+                    x.CurrencyName = x.Currency.Display;
+                }
+            });
+            return result;
         }
 
         public async Task CreateProduct(SaveProductModel model)

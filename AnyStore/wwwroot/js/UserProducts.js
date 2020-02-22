@@ -112,6 +112,8 @@
             productHtml2 = productHtml2.replace(/{{productDescription}}/g, d.description);
             productHtml1 = productHtml1.replace(/{{productImage}}/g, d.image);
             productHtml2 = productHtml2.replace(/{{productImage}}/g, d.image);
+            productHtml1 = productHtml1.replace(/{{currencyName}}/g, d.currencyName);
+            productHtml2 = productHtml2.replace(/{{currencyName}}/g, d.currencyName);
             productHtml1 = productHtml1.replace(/{{productName}}/g, d.title);
             productHtml2 = productHtml2.replace(/{{productName}}/g, d.title);
             productHtml1 = productHtml1.replace(/{{price}}/g, d.sellingPrice);

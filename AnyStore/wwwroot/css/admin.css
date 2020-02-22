@@ -128,6 +128,11 @@ span.k-widget.k-combobox.k-header{
     float: left;
     padding: 0.5%;
 }
+.form-20 {
+    width: 19%;
+    float: left;
+    padding: 0.5%;
+}
 .form-50 {
     width: 49%;
     float: left;
@@ -146,4 +151,13 @@ span.k-widget.k-combobox.k-header{
 }
 [aria-selected=true] > .edit-buttons {
     display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.image-list-view{
+    display: flex;
+}
+.image-list-view>div{
+    position: relative;
 }

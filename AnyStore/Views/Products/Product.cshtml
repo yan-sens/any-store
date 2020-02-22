@@ -61,7 +61,7 @@
                 <hr />
                 <p class="short-description">@Html.Raw(HttpUtility.HtmlDecode(Model.Product.Description))</p>
                 <hr />
-                <span class="current-price">@Model.Product.SellingPrice</span>
+                <span class="current-price">@Model.Product.CurrencyName @Model.Product.SellingPrice</span>
                 <span class="item-stock">
                     Наличие:
                     @if (Model.Product.Availability)

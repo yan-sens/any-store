@@ -18,6 +18,7 @@
     context.ProductImageListView = null;
     context.ProductImagesListView = null;
     context.ProductValidator = null;
+    context.CurrenciesDropPown = null;
 
     context.init = function () {
 
@@ -53,8 +54,8 @@
                 field: "title",
                 title: "Заголовок"
             }, {
-                field: "manufacture",
-                title: "Производитель"
+                field: "currencyName",
+                title: "Валюта"
             }, {
                 field: "sellingPrice",
                 title: "Цена продажи"
@@ -81,6 +82,17 @@
             dataSource: {
                 transport: {
                     read: "/Admin/GetCategoriesForProduct"
+                },
+                pageSize: 25
+            },
+            dataTextField: "name",
+            dataValueField: "id"
+        }).data("kendoComboBox"); 
+
+        context.CurrenciesDropPown = $("#currencies_ddl").kendoComboBox({
+            dataSource: {
+                transport: {
+                    read: "/Settings/GetAllCurrencies"
                 },
                 pageSize: 25
             },
@@ -133,7 +145,7 @@
             }
         }).data("kendoUpload");
 
-        context.ProductImageListView = $("#product_listView").kendoListView({
+        context.ProductImageListView = $("#product_image_listView").kendoListView({
             template: kendo.template($("#image_template").html()),
             selectable: true,
             dataSource: {
@@ -149,7 +161,7 @@
             }
         }).data("kendoListView");
 
-        context.ProductImagesListView = $("#products_listView").kendoListView({
+        context.ProductImagesListView = $("#product_images_listView").kendoListView({
             template: kendo.template($("#image_template").html()),
             selectable: true,
             dataSource: {
@@ -193,6 +205,7 @@
                     data["AdditionalDescription"] = context.ProductDescription2TextArea.value();
                     data["SellingPrice"] = context.ProductPriceInput.value();
                     data["CategoryId"] = context.CategoriesDropPown.value();
+                    data["CurrencyId"] = context.CurrenciesDropPown.value();
                     data["Image"] = context.ProductImageListView.dataSource.data()[0].src;
                     data["Images"] = context.ProductImagesListView.dataSource.data().map(x => x.src);
 
@@ -250,6 +263,7 @@
         context.ProductPriceInput.value(item.sellingPrice);
         context.ProductDescriptionTextArea.value(item.description);
         context.CategoriesDropPown.value(item.categoryId);
+        context.CurrenciesDropPown.value(item.currencyId);
         kendo.ui.progress($("#product_form"), true);
         context.ProductWindow.title("Редактировать товар");
         context.ProductImageListView.dataSource.add({
@@ -279,6 +293,7 @@
         context.ProductTitleInput.value(null);
         context.ProductDescriptionTextArea.value(null);
         context.CategoriesDropPown.value(null);
+        context.CurrenciesDropPown.value(null);
         context.ProductImageListView.dataSource.data().empty();
         context.ProductImagesListView.dataSource.data().empty();
     };

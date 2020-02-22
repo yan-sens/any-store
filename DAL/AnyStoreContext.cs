@@ -29,6 +29,11 @@ namespace DAL
                 .WithOne(c => c.Product)
                 .HasForeignKey(c => c.ProductId);
 
+            modelBuilder.Entity<Product>()
+                .HasOne(x => x.Currency)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.CurrencyId);
+
             base.OnModelCreating(modelBuilder);
         }
     }

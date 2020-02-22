@@ -17,6 +17,9 @@ namespace DAL.Models
         public Guid CategoryId { get; set; }
         [NotMapped]
         public bool Availability { get; set; }
+        public Currency Currency { get; set; }
+        [NotMapped]
+        public string CurrencyName { get; set; }
         public List<ProductImage> Images { get; set; }
     }
 }
