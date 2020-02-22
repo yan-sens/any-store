@@ -105,10 +105,12 @@
         context.ProductTitleInput = $("#product_title_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.ProductPriceInput = $("#product_price_inp").kendoNumericTextBox().data("kendoNumericTextBox");
         context.ProductDescriptionTextArea = $("#product_description_ta").kendoEditor({
-            tools: CommonHelper.getEditorTools()
+            tools: CommonHelper.getEditorTools(),
+            resizable: true
         }).data("kendoEditor");
         context.ProductDescription2TextArea = $("#product_description2_ta").kendoEditor({
-            tools: CommonHelper.getEditorTools()
+            tools: CommonHelper.getEditorTools(),
+            resizable: true
         }).data("kendoEditor");
         $("#open_add_product_window_btn").kendoButton({
             click: function (e) {
@@ -291,10 +293,11 @@
     context.clearProductForm = function () {
         context.ProductPriceInput.value(null);
         context.ProductNameInput.value(null);
-        context.ProductTitleInput.value(null);
-        context.ProductDescriptionTextArea.value(null);
+        context.ProductTitleInput.value(null);        
         context.CategoriesDropPown.value(null);
         context.CurrenciesDropPown.value(null);
+        context.ProductDescriptionTextArea.value(null);
+        context.ProductDescription2TextArea.value(null);
         context.ProductImageListView.dataSource.data().empty();
         context.ProductImagesListView.dataSource.data().empty();
     };
