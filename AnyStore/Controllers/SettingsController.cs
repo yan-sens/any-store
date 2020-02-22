@@ -3,6 +3,8 @@ using DAL.Models.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Services.Interfaces;
+using Services.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,9 +19,24 @@ namespace AnyStore.Controllers
             _settingsService = settingsService;
         }
 
-        public Task<List<Currency>> GetAllCurrencies()
+        public async Task<List<Currency>> GetAllCurrencies()
         {
-            return _settingsService.GetAllCurrencies();
+            return await _settingsService.GetAllCurrencies();
+        }
+
+        public async Task CreateCurrency(CurrencyModel model)
+        {
+            await _settingsService.CreateCurrency(model);
+        }
+
+        public async Task UpdateCurrency(CurrencyModel model)
+        {
+            await _settingsService.UpdateCurrency(model);
+        }
+
+        public async Task RemoveCurrency(Guid id)
+        {
+            await _settingsService.RemoveCurrency(id);
         }
     }
 }

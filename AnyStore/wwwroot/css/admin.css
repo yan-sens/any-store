@@ -88,12 +88,12 @@ span.k-widget.k-combobox.k-header{
     background-color: #D5D5D5;
     color: #D5D5D5;
 }
-#save_category_btn, #save_product_btn {
+#save_category_btn, #save_product_btn, #save_currency_btn {
     float: right;
     margin-top: 20px;
     margin-right: 15px;
 }
-#cancel_save_category_btn, #cancel_save_product_btn {
+#cancel_save_category_btn, #cancel_save_product_btn, #cancel_save_currency_btn {
     margin-top: 20px;
     float: right;
     margin-bottom: 10px;

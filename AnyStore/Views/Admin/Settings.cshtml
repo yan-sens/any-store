@@ -21,6 +21,25 @@
     </div>
 </div>
 
+<div class="add-window" id="add_currency_window">
+    <form id="currency_form" enctype="multipart/form-data">
+
+        <div>
+            <div>
+                <label for="currency_name_inp">Название</label><br />
+                <input class="w100" name="Name" id="currency_name_inp" required /><br /><br />
+            </div>
+            <div>
+                <label for="currency_display_inp">Обозначение</label><br />
+                <input class="w100" name="Title" id="currency_display_inp" required />
+            </div>
+        </div>
+
+        <button id="cancel_save_currency_btn" type="button">Отмена</button>
+        <button id="save_currency_btn" type="button">Сохранить</button>
+    </form>
+</div>
+
 
 <script src="~/js/Settings.js"></script>
 <script>

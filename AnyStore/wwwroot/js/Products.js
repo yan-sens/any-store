@@ -92,8 +92,12 @@
         context.ProductNameInput = $("#product_name_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.ProductTitleInput = $("#product_title_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.ProductPriceInput = $("#product_price_inp").kendoNumericTextBox().data("kendoNumericTextBox");
-        context.ProductDescriptionTextArea = $("#product_description_ta").kendoEditor().data("kendoEditor");
-        context.ProductDescription2TextArea = $("#product_description2_ta").kendoEditor().data("kendoEditor");
+        context.ProductDescriptionTextArea = $("#product_description_ta").kendoEditor({
+            tools: CommonHelper.getEditorTools()
+        }).data("kendoEditor");
+        context.ProductDescription2TextArea = $("#product_description2_ta").kendoEditor({
+            tools: CommonHelper.getEditorTools()
+        }).data("kendoEditor");
         $("#open_add_product_window_btn").kendoButton({
             click: function (e) {
                 context.IsProductEdit = false;

@@ -1,0 +1,46 @@
+﻿if (!CommonHelper)
+    var CommonHelper = {};
+
+CommonHelper.getEditorTools = function () {
+    return [
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "justifyLeft",
+        "justifyCenter",
+        "justifyRight",
+        "justifyFull",
+        "insertUnorderedList",
+        "insertOrderedList",
+        "indent",
+        "outdent",
+        "createLink",
+        "unlink",
+        "insertImage",
+        "insertFile",
+        "subscript",
+        "superscript",
+        "tableWizard",
+        "createTable",
+        "addRowAbove",
+        "addRowBelow",
+        "addColumnLeft",
+        "addColumnRight",
+        "deleteRow",
+        "deleteColumn",
+        "mergeCellsHorizontally",
+        "mergeCellsVertically",
+        "splitCellHorizontally",
+        "splitCellVertically",
+        "viewHtml",
+        "formatting",
+        "cleanFormatting",
+        "copyFormat",
+        "applyFormat",
+        "fontName",
+        "fontSize",
+        "foreColor",
+        "backColor"
+    ];
+};
