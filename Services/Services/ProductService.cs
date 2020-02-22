@@ -26,7 +26,8 @@ namespace Services.Services
                 if (x.Currency != null)
                 {
                     x.Currency.Products = null;
-                    x.CurrencyName = x.Currency.Display;
+                    x.CurrencyName = x.Currency.Name;
+                    x.CurrencyDisplay = x.Currency.Display;
                 }
             });
             return result;
@@ -38,7 +39,8 @@ namespace Services.Services
             if (result != null)
             {
                 result.Currency.Products = null;
-                result.CurrencyName = result.Currency.Display;
+                result.CurrencyName = result.Currency.Name;
+                result.CurrencyDisplay = result.Currency.Display;
             }
             return result;
         }
@@ -55,7 +57,8 @@ namespace Services.Services
                 if (x.Currency != null)
                 {
                     x.Currency.Products = null;
-                    x.CurrencyName = x.Currency.Display;
+                    x.CurrencyName = x.Currency.Name;
+                    x.CurrencyDisplay = x.Currency.Display;
                 }
             });
             return result;

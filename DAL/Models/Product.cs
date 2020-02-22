@@ -20,6 +20,8 @@ namespace DAL.Models
         public Currency Currency { get; set; }
         [NotMapped]
         public string CurrencyName { get; set; }
+        [NotMapped]
+        public string CurrencyDisplay { get; set; }
         public List<ProductImage> Images { get; set; }
     }
 }
