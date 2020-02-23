@@ -15,6 +15,8 @@ namespace DAL
         public DbSet<Product> Products { get; set; }
         public DbSet<Currency> Currencies { get; set; }  
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<PromotionMapping> PromotionMappings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +35,11 @@ namespace DAL
                 .HasOne(x => x.Currency)
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.CurrencyId);
+
+            modelBuilder.Entity<Promotion>()
+                .HasMany(x => x.ProductMappings)
+                .WithOne(x => x.Promotion)
+                .HasForeignKey(x => x.PromotionId);
 
             base.OnModelCreating(modelBuilder);
         }

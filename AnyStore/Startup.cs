@@ -66,6 +66,7 @@ namespace AnyStore
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProductService, ProductService>(); 
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IPromotionService, PromotionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

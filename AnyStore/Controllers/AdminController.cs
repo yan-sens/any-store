@@ -14,9 +14,16 @@ namespace AnyStore.Controllers
 {
     public class AdminController : BaseController
     {
+        private readonly IPromotionService _promotionService;
         public AdminController(UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, ICategoryService categoryService, IProductService productService) : base(userManager, configuration, categoryService, productService)
-        { }
+                                IConfiguration configuration, 
+                                ICategoryService categoryService, 
+                                IProductService productService,
+                                IPromotionService promotionService) 
+            : base(userManager, configuration, categoryService, productService)
+        {
+            _promotionService = promotionService;
+        }
 
         [Authorize]
         public IActionResult Index()
@@ -35,8 +42,15 @@ namespace AnyStore.Controllers
         {
             return View();
         }
+
         [Authorize]
         public IActionResult Settings()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Promotions()
         {
             return View();
         }

@@ -14,7 +14,11 @@ namespace AnyStore.Controllers
     {
         private readonly ISettingsService _settingsService;
         public SettingsController(UserManager<ApplicationUser> userManager,
-            IConfiguration configuration, ICategoryService categoryService, IProductService productService, ISettingsService settingsService) : base(userManager, configuration, categoryService, productService)
+                                    IConfiguration configuration, 
+                                    ICategoryService categoryService, 
+                                    IProductService productService, 
+                                    ISettingsService settingsService) 
+            : base(userManager, configuration, categoryService, productService)
         {
             _settingsService = settingsService;
         }
