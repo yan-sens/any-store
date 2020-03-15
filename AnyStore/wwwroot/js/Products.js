@@ -54,6 +54,9 @@
                 field: "title",
                 title: "Заголовок"
             }, {
+                field: "categoryName",
+                title: "Категория"
+            }, {
                 field: "currencyName",
                 title: "Валюта"
             }, {

@@ -75,11 +75,7 @@
         context.CategoryNameInput = $("#category_name_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.CategoryTitleInput = $("#category_title_inp").kendoMaskedTextBox().data("kendoMaskedTextBox");
         context.CategoryDescriptionTextArea = $("#category_description_ta").kendoEditor().data("kendoEditor");        
-        context.CategoryChildSwitch = $("#child_switch_cb").kendoSwitch({
-            change: function (e) {
-                console.log(e.checked);
-            }
-        }).data("kendoSwitch");
+        context.CategoryChildSwitch = $("#child_switch_cb").kendoSwitch().data("kendoSwitch");
         $("#open_add_category_window_btn").kendoButton({
             click: function (e) {
                 context.IsCategoryEdit = false;

@@ -3,7 +3,6 @@ using Common.Models;
 using DAL.Models;
 using DAL.Models.Account;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +10,7 @@ using Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AnyStore.Controllers
@@ -38,15 +38,18 @@ namespace AnyStore.Controllers
         }
 
         [AllowAnonymous]
-        public async Task<List<Product>> GetProductsByCategoryId(Guid categoryId)
+        public async Task<IActionResult> GetProductsByCategoryId(Guid categoryId)
         {
-            return await _productService.GetProductsByCategoryId(categoryId);
+            var result = await _productService.GetProductsByCategoryId(categoryId);
+            return Json(result);
         }
 
         [Authorize]
-        public async Task<List<Product>> GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            return await _productService.GetAllProducts();
+            var result = await _productService.GetAllProducts();
+
+            return Json(result);
         }
 
         [Authorize]
@@ -66,7 +69,14 @@ namespace AnyStore.Controllers
         {
             await _productService.UpdateProduct(model);
         }
-        
+
+        [Authorize]
+        public async Task<IActionResult> GetPromotionProducts()
+        {
+            var result = await _productService.GetPromotionProducts();
+            return Json(result);
+        }        
+
         [Authorize]
         public async Task RemoveProduct(string id)
         {

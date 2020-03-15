@@ -3,8 +3,39 @@
     ViewData["Title"] = "Акции";
     Layout = "_AdminLayout";
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.8.16/dayjs.min.js" crossorigin="anonymous"></script>
 
-<h2>Promotions</h2>
+<div class="grid-header">
+    <div class="grid-header-label">
+        <h3>Акции</h3>
+    </div>
+    <div class="grid-header-btn-dv">
+        <button id="open_add_promotion_window_btn" class="k-button k-primary" type="button">Добавить</button>
+    </div>
+</div>
+
+<div id="dvPromotions"></div>
+
+<div class="add-window" id="add_window">
+    <div class="form-container">
+        <div class="form-100">
+            <label for="promotion_name_inp">Название</label><br />
+            <input id="promotion_name_inp" /><br />
+            <label for="promotion_rate_inp">Скидка %</label><br />
+            <input id="promotion_rate_inp" />
+            <label for="promotion_start_inp">Старт</label><br />
+            <input id="promotion_start_inp" />
+            <label for="promotion_end_inp">Конец</label><br />
+            <input id="promotion_end_inp" />
+        </div>
+    </div>
+    <button id="cancel_save_promotion_btn" type="button">Отмена</button>
+    <button id="save_promotion_btn" class="k-primary" type="button">Сохранить</button>
+</div>
+
+<div class="products-window" id="products_window">
+    <div id="dvPromotionProducts"></div>
+</div>
 
 
 <script src="~/js/Promotions.js"></script>

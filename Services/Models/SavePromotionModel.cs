@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Services.Models
 {
     public class SavePromotionModel
     {
+        public Guid? Id { get; set; }
         public string Name { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public int Rate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace Services.Interfaces
         Task<Product> GetProductById(Guid productId);
         Task CreateProduct(SaveProductModel model);
         Task UpdateProduct(SaveProductModel model);
+        Task<List<PromotionMapping>> GetPromotionProducts();
         Task RemoveProduct(Guid id);
     }
 }

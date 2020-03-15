@@ -36,10 +36,20 @@ namespace DAL
                 .WithMany(x => x.Products)
                 .HasForeignKey(x => x.CurrencyId);
 
+            modelBuilder.Entity<Product>()
+                .HasOne(x => x.Category)
+                .WithMany(x => x.Products)
+                .HasForeignKey(x => x.CategoryId);
+
             modelBuilder.Entity<Promotion>()
                 .HasMany(x => x.ProductMappings)
                 .WithOne(x => x.Promotion)
                 .HasForeignKey(x => x.PromotionId);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.PromotionMappings)
+                .WithOne(x => x.Product)
+                .HasForeignKey(x => x.ProductId);
 
             base.OnModelCreating(modelBuilder);
         }

@@ -18,5 +18,7 @@ namespace DAL.Models
         public List<Category> Categories { get; set; }
         [NotMapped]
         public Category ParentCategory { get; set; }
+        [NotMapped]
+        public List<Product> Products { get; set; }
     }
 }

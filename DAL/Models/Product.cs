@@ -17,11 +17,17 @@ namespace DAL.Models
         public Guid CategoryId { get; set; }
         [NotMapped]
         public bool Availability { get; set; }
+        [NotMapped]
+        public Category Category { get; set; }
         public Currency Currency { get; set; }
         [NotMapped]
         public string CurrencyName { get; set; }
         [NotMapped]
+        public string CategoryName { get; set; }
+        [NotMapped]
         public string CurrencyDisplay { get; set; }
         public List<ProductImage> Images { get; set; }
+        [NotMapped]
+        public List<PromotionMapping> PromotionMappings { get; set; }
     }
 }

@@ -21,13 +21,18 @@ namespace Services.Services
         }
         public async Task<List<Product>> GetAllProducts()
         {
-            var result = await _dbContext.Products.Include(x => x.Currency).ToListAsync();
+            var result = await _dbContext.Products.Include(x => x.Currency).Include(x => x.Category).ToListAsync();
             result.ForEach(x => {                
                 if (x.Currency != null)
                 {
                     x.Currency.Products = null;
                     x.CurrencyName = x.Currency.Name;
                     x.CurrencyDisplay = x.Currency.Display;
+                }
+                if (x.Category != null)
+                {
+                    x.CategoryName = x.Category.Name;
+                    x.Category.Products = null;
                 }
             });
             return result;
@@ -42,6 +47,12 @@ namespace Services.Services
                 result.CurrencyName = result.Currency.Name;
                 result.CurrencyDisplay = result.Currency.Display;
             }
+            if (result.Category != null)
+            {
+                result.CategoryName = result.Category.Name;
+                result.Category.Products = null;
+            }               
+
             return result;
         }
 
@@ -60,7 +71,19 @@ namespace Services.Services
                     x.CurrencyName = x.Currency.Name;
                     x.CurrencyDisplay = x.Currency.Display;
                 }
+                if (x.Category != null)
+                {
+                    x.CategoryName = x.Category.Name;
+                    x.Category.Products = null;
+                }
             });
+            return result;
+        }
+
+        public async Task<List<PromotionMapping>> GetPromotionProducts()
+        {
+            var result = await _dbContext.PromotionMappings.Include(x => x.Product).ToListAsync();
+            RemoveRecursion(ref result);
             return result;
         }
 
@@ -140,6 +163,24 @@ namespace Services.Services
                 productImages.ForEach(x => _dbContext.Remove(x));
 
             await _dbContext.SaveChangesAsync();
+        }
+
+        private void RemoveRecursion(ref List<PromotionMapping> products)
+        {
+            products.ForEach(x => {
+                if (x.Product.Currency != null)
+                {
+                    x.Product.Currency.Products = null;
+                    x.Product.CurrencyName = x.Product.Currency.Name;
+                    x.Product.CurrencyDisplay = x.Product.Currency.Display;
+                }
+                if (x.Product.Category != null)
+                {
+                    x.Product.CategoryName = x.Product.Category.Name;
+                    x.Product.Category = null;
+                }
+                x.Product.PromotionMappings = null;
+            });
         }
     }
 }
