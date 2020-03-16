@@ -27,6 +27,9 @@ namespace Services.Models
             ParentCategory = category.ParentCategory;
             ParentCategoryName = category.ParentCategory?.Name;
             Products = category.Products?.Select(x => new ProductResponseModel(x)).ToList();
+
+            if(ParentCategory != null)
+                ParentCategory.Categories = null;
         }
     }
 }
