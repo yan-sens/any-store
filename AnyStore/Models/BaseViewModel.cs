@@ -1,4 +1,5 @@
 ﻿using Common.Classes;
+using Services.Models;
 using System.Collections.Generic;
 
 namespace AnyStore.Models
@@ -7,9 +8,12 @@ namespace AnyStore.Models
     {
         public List<CategoryMenuItem> CategoryMenuItems { get; set; } = new List<CategoryMenuItem>();
 
-        public BaseViewModel(List<CategoryMenuItem> categoryMenuItems)
+        public List<ProductResponseModel> PromotedProducts { get; set; } = new List<ProductResponseModel>();
+
+        public BaseViewModel(List<CategoryMenuItem> categoryMenuItems, List<ProductResponseModel> promotedProducts)
         {
             CategoryMenuItems = categoryMenuItems;
+            PromotedProducts = promotedProducts;
         }
     }
 }

@@ -298,161 +298,129 @@
     </header>
     <!-- HEADER AREA END -->
     <!-- Category slider area start -->
-    @if (Model != null && Model.CategoryMenuItems != null)
+    @if (Model != null)
     {
         <div class="category-slider-area">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3">
-                        <!-- CATEGORY-MENU-LIST START -->
-                        <div class="left-category-menu hidden-sm hidden-xs">
-                            <div class="left-product-cat">
-                                <div class="category-heading">
-                                    <h2>Каталог</h2>
-                                </div>
-                                <div class="category-menu-list">
-                                    <ul>
-                                        @{
-                                            var maxMenuCount = 2;
-                                            var menuIndex = 0;
-                                            @foreach (var item in Model.CategoryMenuItems)
-                                            {
-                                                menuIndex++;
-                                                var addClass = menuIndex > maxMenuCount ? "rx-child" : String.Empty;
-                                                <!-- Single menu start -->
-                                                @if (item.ChildItems.Count == 0)
-                                                {
-                                                    <li class="@addClass">
-                                                        <a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@item.Id">@item.Name</a>
-                                                    </li>
-                                                }
-                                                else
-                                                {
-                                                    <li class="@addClass arrow-plus">
-                                                        <a href="#">@item.Name</a>
-                                                        <div class="cat-left-drop-menu">
-                                                            <div class="cat-left-drop-menu-left">
-                                                                <ul>
-                                                                    @foreach (var childItem in item.ChildItems.Where(x => x.ChildItems.Count == 0))
-                                                                    {
-                                                                        <li><a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@childItem.Id">@childItem.Name</a></li>
-                                                                    }
-                                                                </ul>
-                                                            </div>
 
-                                                            @foreach (var childItem in item.ChildItems.Where(x => x.ChildItems.Count > 0))
-                                                            {
+                        <!-- CATEGORY-MENU-LIST START -->
+                        @if (Model.CategoryMenuItems != null)
+                        {
+                            <div class="left-category-menu hidden-sm hidden-xs">
+                                <div class="left-product-cat">
+                                    <div class="category-heading">
+                                        <h2>Каталог</h2>
+                                    </div>
+                                    <div class="category-menu-list">
+                                        <ul>
+                                            @{
+                                                var maxMenuCount = 2;
+                                                var menuIndex = 0;
+                                                @foreach (var item in Model.CategoryMenuItems)
+                                                {
+                                                    menuIndex++;
+                                                    var addClass = menuIndex > maxMenuCount ? "rx-child" : String.Empty;
+                                                    <!-- Single menu start -->
+                                                    @if (item.ChildItems.Count == 0)
+                                                    {
+                                                        <li class="@addClass">
+                                                            <a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@item.Id">@item.Name</a>
+                                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        <li class="@addClass arrow-plus">
+                                                            <a href="#">@item.Name</a>
+                                                            <div class="cat-left-drop-menu">
                                                                 <div class="cat-left-drop-menu-left">
-                                                                    <a class="menu-item-heading" href="#">@childItem.Name</a>
                                                                     <ul>
-                                                                        @foreach (var subchildItem in childItem.ChildItems)
+                                                                        @foreach (var childItem in item.ChildItems.Where(x => x.ChildItems.Count == 0))
                                                                         {
-                                                                            <li><a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@subchildItem.Id">@subchildItem.Name</a></li>
+                                                                            <li><a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@childItem.Id">@childItem.Name</a></li>
                                                                         }
                                                                     </ul>
                                                                 </div>
-                                                            }
-                                                        </div>
-                                                    </li>
+
+                                                                @foreach (var childItem in item.ChildItems.Where(x => x.ChildItems.Count > 0))
+                                                                {
+                                                                    <div class="cat-left-drop-menu-left">
+                                                                        <a class="menu-item-heading" href="#">@childItem.Name</a>
+                                                                        <ul>
+                                                                            @foreach (var subchildItem in childItem.ChildItems)
+                                                                            {
+                                                                                <li><a asp-controller="Products" asp-action="Products" , asp-route-categoryId="@subchildItem.Id">@subchildItem.Name</a></li>
+                                                                            }
+                                                                        </ul>
+                                                                    </div>
+                                                                }
+                                                            </div>
+                                                        </li>
+                                                    }
                                                 }
                                             }
-                                        }
 
-                                        <!-- MENU ACCORDION START -->
-                                        <li class=" rx-parent">
-                                            <a class="rx-default">
-                                                <span class="cat-thumb  fa fa-plus"></span> Больше категорий...
-                                            </a>
-                                            <a class="rx-show">
-                                                <span class="cat-thumb  fa fa-minus"></span> свернуь...
-                                            </a>
-                                        </li>
-                                        <!-- MENU ACCORDION END -->
-                                    </ul>
+                                            <!-- MENU ACCORDION START -->
+                                            <li class=" rx-parent">
+                                                <a class="rx-default">
+                                                    <span class="cat-thumb  fa fa-plus"></span> Больше категорий...
+                                                </a>
+                                                <a class="rx-show">
+                                                    <span class="cat-thumb  fa fa-minus"></span> свернуь...
+                                                </a>
+                                            </li>
+                                            <!-- MENU ACCORDION END -->
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                         <!-- END CATEGORY-MENU-LIST -->
                         <!-- START HOT-DEALS-AREA -->
-                        <div class="hot-deals-area carosel-circle">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="area-title">
-                                        <h3 class="title-group border-red gfont-1">Горячие предложения</h3>
+                        @if (Model.PromotedProducts.Count > 0)
+                        {
+                            <div class="hot-deals-area carosel-circle">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="area-title">
+                                            <h3 class="title-group border-red gfont-1">Горячие предложения</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="active-hot-deals">
+                                        @{
+                                            foreach (var hot in Model.PromotedProducts)
+                                            {
+                                                <!-- Start Single-hot-deals -->
+                                                <div class="col-xs-12">
+                                                    <div class="single-hot-deals">
+                                                        <div class="hot-deals-photo">
+                                                            <a href="#"><img src="data:image/jpeg;base64,@hot.Image" alt="Product"></a>
+                                                        </div>
+                                                        <div class="count-down">
+                                                            <div class="timer">
+                                                                <div data-countdown="@hot.PromotionEndDate"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hot-deals-text">
+                                                            <h5><a href="#" class="name-group">@hot.Name</a></h5>
+                                                            <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
+                                                            <div class="price-box">
+                                                                <span class="price gfont-2">$@(hot.SellingPrice / 100 * (100 - hot.PromotionRate))</span>
+                                                                <span class="old-price gfont-2">$@hot.SellingPrice</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Single-hot-deals -->
+                                            }
+                                        }
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="active-hot-deals">
-                                    <!-- Start Single-hot-deals -->
-                                    <div class="col-xs-12">
-                                        <div class="single-hot-deals">
-                                            <div class="hot-deals-photo">
-                                                <a href="#"><img src="~/images/hot-deals/1.jpg" alt="Product"></a>
-                                            </div>
-                                            <div class="count-down">
-                                                <div class="timer">
-                                                    <div data-countdown="02/23/2020"></div>
-                                                </div>
-                                            </div>
-                                            <div class="hot-deals-text">
-                                                <h5><a href="#" class="name-group">Various Versions</a></h5>
-                                                <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
-                                                <div class="price-box">
-                                                    <span class="price gfont-2">$99.00</span>
-                                                    <span class="old-price gfont-2">$110.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-hot-deals -->
-                                    <!-- Start Single-hot-deals -->
-                                    <div class="col-xs-12">
-                                        <div class="single-hot-deals">
-                                            <div class="hot-deals-photo">
-                                                <a href="#"><img src="~/images/hot-deals/2.jpg" alt="Product"></a>
-                                            </div>
-                                            <div class="count-down">
-                                                <div class="timer">
-                                                    <div data-countdown="03/17/2020"></div>
-                                                </div>
-                                            </div>
-                                            <div class="hot-deals-text">
-                                                <h5><a href="#" class="name-group">Trid Palm</a></h5>
-                                                <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
-                                                <div class="price-box">
-                                                    <span class="price gfont-2">$85.00</span>
-                                                    <span class="old-price gfont-2">$120.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-hot-deals -->
-                                    <!-- Start Single-hot-deals -->
-                                    <div class="col-xs-12">
-                                        <div class="single-hot-deals">
-                                            <div class="hot-deals-photo">
-                                                <a href="#"><img src="~/images/hot-deals/3.jpg" alt="Product"></a>
-                                            </div>
-                                            <div class="count-down">
-                                                <div class="timer">
-                                                    <div data-countdown="04/20/2020"></div>
-                                                </div>
-                                            </div>
-                                            <div class="hot-deals-text">
-                                                <h5><a href="#" class="name-group">Established Fact</a></h5>
-                                                <span class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
-                                                <div class="price-box">
-                                                    <span class="price gfont-2">$90.00</span>
-                                                    <span class="old-price gfont-2">$105.00</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single-hot-deals -->
-                                </div>
-                            </div>
-                        </div>
+                        }
                         <!-- END HOT-DEALS-AREA -->
 
                     </div>

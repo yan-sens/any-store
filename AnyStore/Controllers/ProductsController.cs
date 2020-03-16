@@ -1,6 +1,5 @@
 ﻿using AnyStore.Models;
 using Common.Models;
-using DAL.Models;
 using DAL.Models.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -8,9 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace AnyStore.Controllers
@@ -25,7 +21,7 @@ namespace AnyStore.Controllers
         public async Task<IActionResult> Products(Guid categoryId)
         {
             var category = await _categoryService.GetCategoryById(categoryId);          
-            var model = new ProductsViewModel(CategoryMenuItems, category);
+            var model = new ProductsViewModel(CategoryMenuItems, PromotedProducts, category);
             return View(model);
         }
 
@@ -33,7 +29,7 @@ namespace AnyStore.Controllers
         public async Task<IActionResult> Product(Guid id)
         {
             var product = await _productService.GetProductById(id);
-            var model = new ProductViewModel(CategoryMenuItems, product);
+            var model = new ProductViewModel(CategoryMenuItems, PromotedProducts, product);
             return View(model);
         }
 
@@ -53,9 +49,11 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
-        public async Task<List<ProductImage>> GetProductImagesByProductId(Guid productId)
+        public async Task<IActionResult> GetProductImagesByProductId(Guid productId)
         {
-            return await _productService.GetProductImagesByProductId(productId);
+            var result = await _productService.GetProductImagesByProductId(productId);
+
+            return Ok(result);
         }
 
         [Authorize]

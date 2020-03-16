@@ -154,10 +154,6 @@
                 context.promotionWindow.close();
             }
         });
-
-        $.get("/Products/GetPromotionProducts",null, function (data) {
-            console.log(data);
-        });
     };
 
     context.promotionProductChange = function (id){

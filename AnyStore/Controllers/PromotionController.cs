@@ -27,21 +27,26 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
-        public async Task<List<Promotion>> GetPromotions()
+        public async Task<IActionResult> GetPromotions()
         {
-            return await _promotionService.GetPromotions();
+            var result = await _promotionService.GetPromotions();
+            return Json(result);
         }
 
         [Authorize]
-        public async Task<Promotion> AddPromotion(SavePromotionModel model)
+        public async Task<IActionResult> AddPromotion(SavePromotionModel model)
         {
-            return await _promotionService.AddPromotion(model);
+            await _promotionService.AddPromotion(model);
+
+            return Ok();
         }
 
         [Authorize]
-        public async Task<Promotion> UpdatePromotion(SavePromotionModel model)
+        public async Task<IActionResult> UpdatePromotion(SavePromotionModel model)
         {
-            return await _promotionService.UpdatePromotion(model);
+            await _promotionService.UpdatePromotion(model);
+
+            return Ok();
         }
 
         [Authorize]

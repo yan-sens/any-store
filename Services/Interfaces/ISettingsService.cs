@@ -8,7 +8,7 @@ namespace Services.Interfaces
 {
     public interface ISettingsService
     {
-        Task<List<Currency>> GetAllCurrencies();
+        Task<List<CurrencyModel>> GetAllCurrencies();
         Task CreateCurrency(CurrencyModel model);
         Task UpdateCurrency(CurrencyModel model);
         Task RemoveCurrency(Guid id);

@@ -5,6 +5,7 @@ using Services.Interfaces;
 using Services.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Services.Services
@@ -17,9 +18,9 @@ namespace Services.Services
         {
             _dbContext = dbContext;
         }
-        public async Task<List<Currency>> GetAllCurrencies()
+        public async Task<List<CurrencyModel>> GetAllCurrencies()
         {
-            return await _dbContext.Currencies.ToListAsync();
+            return await _dbContext.Currencies.Select(x => new CurrencyModel(x)).ToListAsync();
         }
 
         public async Task CreateCurrency(CurrencyModel model)

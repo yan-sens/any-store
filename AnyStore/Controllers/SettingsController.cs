@@ -1,11 +1,10 @@
-﻿using DAL.Models;
-using DAL.Models.Account;
+﻿using DAL.Models.Account;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Services.Interfaces;
 using Services.Models;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace AnyStore.Controllers
@@ -23,9 +22,10 @@ namespace AnyStore.Controllers
             _settingsService = settingsService;
         }
 
-        public async Task<List<Currency>> GetAllCurrencies()
+        public async Task<IActionResult> GetAllCurrencies()
         {
-            return await _settingsService.GetAllCurrencies();
+            var result = await _settingsService.GetAllCurrencies();
+            return Json(result);
         }
 
         public async Task CreateCurrency(CurrencyModel model)

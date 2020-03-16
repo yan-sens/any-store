@@ -18,9 +18,10 @@ namespace Services.Services
             _dbContext = dbContext;
         }
 
-        public async Task<List<Promotion>> GetPromotions()
+        public async Task<List<PromotionResponseModel>> GetPromotions()
         {
-            return await _dbContext.Promotions.ToListAsync();
+            var result = await _dbContext.Promotions.Select(x => new PromotionResponseModel(x)).ToListAsync();
+            return result;
         }
 
         public async Task<Promotion> AddPromotion(SavePromotionModel model)
@@ -59,9 +60,9 @@ namespace Services.Services
             return promotion;
         }
 
-        public async Task<List<PromotionMapping>> GetPromotionProducts(Guid? promotionId)
+        public async Task<List<PromotionMappingResponseModel>> GetPromotionProducts(Guid? promotionId)
         {
-            return await _dbContext.PromotionMappings.Where(x => promotionId == null || x.PromotionId == promotionId).ToListAsync();
+            return await _dbContext.PromotionMappings.Where(x => promotionId == null || x.PromotionId == promotionId).Select(x => new PromotionMappingResponseModel(x)).ToListAsync();
         }
 
         public async Task UpdatePromotionProduct(UpdatePromotionProductModel model)

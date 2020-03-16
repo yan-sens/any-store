@@ -1,5 +1,6 @@
 ﻿using Common.Classes;
 using DAL.Models;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace Services.Interfaces
 {
     public interface ICategoryService
     {
-        Task<List<Category>> GetCategories();
-        Task<List<Category>> GetCategoriesWithChild();
-        Task<List<Category>> GetCategoriesForProduct();
+        Task<List<CategoryResponseModel>> GetCategories();
+        Task<List<CategoryResponseModel>> GetCategoriesWithChild();
+        Task<List<CategoryResponseModel>> GetCategoriesForProduct();
         Task AddCategory(Category category);
         Task UpdateCategory(Category category);
         Task<Category> GetCategoryById(Guid categoryId);

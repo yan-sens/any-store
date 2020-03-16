@@ -3,9 +3,9 @@ using DAL;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Services.Interfaces;
+using Services.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,22 +19,9 @@ namespace Services.Services
         {
             _dbContext = dbContext;
         }
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<List<ProductResponseModel>> GetAllProducts()
         {
-            var result = await _dbContext.Products.Include(x => x.Currency).Include(x => x.Category).ToListAsync();
-            result.ForEach(x => {                
-                if (x.Currency != null)
-                {
-                    x.Currency.Products = null;
-                    x.CurrencyName = x.Currency.Name;
-                    x.CurrencyDisplay = x.Currency.Display;
-                }
-                if (x.Category != null)
-                {
-                    x.CategoryName = x.Category.Name;
-                    x.Category.Products = null;
-                }
-            });
+            var result = await _dbContext.Products.Include(x => x.Currency).Include(x => x.Category).Select(x => new ProductResponseModel(x)).ToListAsync();
             return result;
         }
 
@@ -56,27 +43,60 @@ namespace Services.Services
             return result;
         }
 
-        public async Task<List<ProductImage>> GetProductImagesByProductId(Guid productId)
+        public async Task<List<string>> GetProductImagesByProductId(Guid productId)
         {
-            return await _dbContext.ProductImages.Where(x => x.ProductId == productId).ToListAsync();
+            return await _dbContext.ProductImages.Where(x => x.ProductId == productId).Select(x => x.Image).ToListAsync();
         }
 
-        public async Task<List<Product>> GetProductsByCategoryId(Guid categoryId)
+        public async Task<List<ProductResponseModel>> GetProductsByCategoryId(Guid categoryId)
         {
-            var result = await _dbContext.Products.Include(x => x.Currency).Where(x => x.CategoryId == categoryId).ToListAsync();
-            result.ForEach(x => {
-                if (x.Currency != null)
+            var result = new List<ProductResponseModel>();
+            var products = await _dbContext.Products.Include(x => x.Currency).Where(x => x.CategoryId == categoryId).ToListAsync();
+            var promotions = await _dbContext.PromotionMappings
+                                                .Include(x => x.Promotion)
+                                                .Where(x => x.Promotion.EndDate > DateTime.Now && x.Promotion.StartDate <= DateTime.Now)
+                                                .ToListAsync();
+
+            result = products.Select(x => new ProductResponseModel(x)).ToList();
+            result.ForEach(x =>
+            {
+                var promotion = promotions.FirstOrDefault(p => p.ProductId == x.Id);
+                if(promotion != null)
                 {
-                    x.Currency.Products = null;
-                    x.CurrencyName = x.Currency.Name;
-                    x.CurrencyDisplay = x.Currency.Display;
-                }
-                if (x.Category != null)
-                {
-                    x.CategoryName = x.Category.Name;
-                    x.Category.Products = null;
+                    x.IsPromoted = true;
+                    x.PromotionRate = promotion.Promotion.Rate;
+                    x.PromotionEndDate = promotion.Promotion.EndDate ?? DateTime.Now.AddHours(27);
                 }
             });
+
+            return result;
+        }
+
+        public async Task<List<ProductResponseModel>> GetPromotedProducts(int? count)
+        {
+            var result = new List<ProductResponseModel>();
+
+            var query = _dbContext.PromotionMappings
+                                        .Include(x => x.Promotion)
+                                        .Include(x => x.Product)
+                                        .Where(x => x.Promotion.EndDate > DateTime.Now && x.Promotion.StartDate <= DateTime.Now)
+                                        .AsQueryable();
+
+            if (count != null && count > 0)
+                query = query.Take((int)count);
+
+            var promotions = await query.ToListAsync();
+
+            promotions.ForEach(x => {
+                var response = new ProductResponseModel(x.Product);
+                response.IsPromoted = true;
+                response.PromotionRate = x.Promotion.Rate;
+                response.PromotionEndDate = x.Promotion.EndDate ?? DateTime.Now.AddHours(27);
+
+                if (!result.Any(r => r.Id == response.Id))
+                    result.Add(response);
+            });
+
             return result;
         }
 

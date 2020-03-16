@@ -62,37 +62,24 @@ namespace AnyStore.Controllers
         }
 
         [Authorize]
-        public async Task<List<Category>> GetCategories()
+        public async Task<IActionResult> GetCategories()
         {
-            var categories = await _categoryService.GetCategories();
-            categories.ForEach(x => {
-                x.Categories = null;
-                x.ParentCategoryName = x.ParentCategory?.Name;
-            });
-            return categories;
+            var result = await _categoryService.GetCategories();
+            return Json(result);
         }
 
         [Authorize]
-        public async Task<List<Category>> GetCategoriesWithChild()
+        public async Task<IActionResult> GetCategoriesWithChild()
         {
-            var categories = await _categoryService.GetCategoriesWithChild();
-            categories.ForEach(x => {
-                x.Categories = null;
-                x.ParentCategory = null;
-                x.ParentCategoryName = x.ParentCategory?.Name;
-            });
-            return categories;
+            var result = await _categoryService.GetCategoriesWithChild();
+            return Json(result);
         }
 
         [Authorize]
-        public async Task<List<Category>> GetCategoriesForProduct()
+        public async Task<IActionResult> GetCategoriesForProduct()
         {
-            var categories = await _categoryService.GetCategoriesForProduct();
-            categories.ForEach(x => {
-                x.Categories = null;
-                x.ParentCategory = null;
-            });
-            return categories;
+            var result = await _categoryService.GetCategoriesForProduct();
+            return Json(result);
         }
 
         [Authorize]

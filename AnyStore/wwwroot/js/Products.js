@@ -280,7 +280,7 @@
             $.each(data, function (i, d) {
                 context.ProductImagesListView.dataSource.add({
                     id: kendo.guid(),
-                    src: d.image
+                    src: d
                 });
             });
 

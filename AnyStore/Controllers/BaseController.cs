@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Services.Interfaces;
+using Services.Models;
 using System.Collections.Generic;
 
 namespace AnyStore.Controllers
@@ -18,6 +19,7 @@ namespace AnyStore.Controllers
         protected ICategoryService _categoryService;
         protected IProductService _productService;
         protected List<CategoryMenuItem> CategoryMenuItems = new List<CategoryMenuItem>();
+        protected List<ProductResponseModel> PromotedProducts = new List<ProductResponseModel>();
 
         protected BaseController(
             UserManager<ApplicationUser> userManager,
@@ -29,6 +31,7 @@ namespace AnyStore.Controllers
             _productService = productService;
 
             CategoryMenuItems = _categoryService.GetCategoryMenuItems().Result;
+            PromotedProducts = _productService.GetPromotedProducts(null).Result;
         }
     }
 }

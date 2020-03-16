@@ -23,7 +23,7 @@ namespace AnyStore.Controllers
         [AllowAnonymous]
         public IActionResult Index()
         {
-            var model = new BaseViewModel(CategoryMenuItems);
+            var model = new BaseViewModel(CategoryMenuItems, PromotedProducts);
             return View(model);
         }
 

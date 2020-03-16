@@ -3,6 +3,7 @@ using DAL;
 using DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Services.Interfaces;
+using Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,18 +20,22 @@ namespace Services.Services
             _dbContext = dbContext;
         }
 
-        public async Task<List<Category>> GetCategories()
+        public async Task<List<CategoryResponseModel>> GetCategories()
         {
-            return await _dbContext.Categories.Include(x => x.ParentCategory).ToListAsync();
+            return await _dbContext.Categories.Include(x => x.ParentCategory).Select(x => new CategoryResponseModel(x)).ToListAsync();
         }
         public async Task<Category> GetCategoryById(Guid categoryId)
         {
             return await _dbContext.Categories.FirstOrDefaultAsync(x => x.Id == categoryId);
         }
 
-        public async Task<List<Category>> GetCategoriesWithChild()
+        public async Task<List<CategoryResponseModel>> GetCategoriesWithChild()
         {
-            return await _dbContext.Categories.Include(x => x.ParentCategory).Where(x => x.HasChildren).ToListAsync();
+            return await _dbContext.Categories
+                                    .Include(x => x.ParentCategory)
+                                    .Where(x => x.HasChildren)
+                                    .Select(x => new CategoryResponseModel(x))
+                                    .ToListAsync();
         }
 
         public async Task<List<CategoryMenuItem>> GetCategoryMenuItems()
@@ -98,9 +103,12 @@ namespace Services.Services
             }                
         }
 
-        public async Task<List<Category>> GetCategoriesForProduct()
+        public async Task<List<CategoryResponseModel>> GetCategoriesForProduct()
         {
-            return await _dbContext.Categories.Where(x => !x.HasChildren).ToListAsync();
+            return await _dbContext.Categories
+                                    .Where(x => !x.HasChildren)
+                                    .Select(x => new CategoryResponseModel(x))
+                                    .ToListAsync();
         }
     }
 }

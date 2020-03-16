@@ -8,11 +8,11 @@ namespace Services.Interfaces
 {
     public interface IPromotionService
     {
-        Task<List<Promotion>> GetPromotions();
+        Task<List<PromotionResponseModel>> GetPromotions();
         Task<Promotion> AddPromotion(SavePromotionModel model);
         Task<Promotion> UpdatePromotion(SavePromotionModel model);
         Task UpdatePromotionProduct(UpdatePromotionProductModel model);
-        Task<List<PromotionMapping>> GetPromotionProducts(Guid? promotionId);
+        Task<List<PromotionMappingResponseModel>> GetPromotionProducts(Guid? promotionId);
         Task RemovePromotion(Guid id);
     }
 }
